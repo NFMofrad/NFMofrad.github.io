@@ -58,16 +58,52 @@
       box-shadow:0 4px 14px rgba(0,0,0,.08);
     }
 
-    /* Bio callout */
-    .bio{
-      background:linear-gradient(180deg, #f5fbf5, #ffffff);
-      border:1px solid #e4efe4;
-      border-left:4px solid var(--accent);
-      padding:14px 16px;
-      border-radius:10px;
-      margin:10px 0 18px;
+    /* Bio / research card style */
+    .bio-card, .research-card {
+      position: relative;
+      background-color: #f7f9ff;
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 1.5rem;
     }
-    .bio p{ margin:.35rem 0; }
+
+    .bio-card:hover, .research-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .bio-card .marker, .research-card .marker {
+      width: 16px;
+      height: 16px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      top: 16px;
+      left: 16px;
+    }
+
+    .bio-card p, .research-card p {
+      margin-left: 36px; /* space for marker */
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .research-card h3 {
+      margin-top: 0;
+      margin-left: 36px; /* space for marker */
+      font-size: 1.05rem;
+      color: #0b1a0b;
+    }
+
+    /* Grid layout for multiple research cards */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
 
     /* Lists tighter for CV */
     ul{ margin:.25rem 0 .75rem 1.25rem; }
@@ -78,7 +114,6 @@
       @page{ size:A4; margin:18mm 22mm; }
       body{ max-width:none; margin:0; padding:0; }
       a{ text-decoration:none; color:inherit; }
-      .bio{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
       h2{ margin-top:10pt; }
       .masthead{ grid-template-columns:1fr auto; gap:14pt; }
       .avatar{ width:110px; height:110px; }
@@ -117,95 +152,45 @@
   <div class="rule"></div>
 
   <!-- Bio -->
-  <section class="bio" aria-label="Professional Summary">
-    <p style="text-align: justify;">I am a computational materials scientist with over <b>five years of experience</b> in scientific programming and high-performance computing. Expertise spans <strong>molecular dynamics (MD) simulations</strong>, <strong>Monte Carlo simulations</strong>, <strong>density functional theory (DFT) calculations</strong>, and <strong>machine learning</strong> applied to research in energy and materials. I am an experienced <strong>Python programmer</strong> with a strong background in <strong>big data analysis</strong>, enabling me to develop efficient, scalable, and reproducible workflows for computational materials research.</p>
+  <section class="bio-section">
+    <h2>About Me</h2>
+    <div class="bio-card">
+      <div class="marker"></div>
+      <p>Hi! I’m Nima, a computational materials scientist who loves exploring materials at the atomic scale. I work with <strong>molecular dynamics</strong>, <strong>DFT</strong>, and <strong>machine learning</strong> to study plasma-surface interactions and material behavior. Python is my go-to for crunching data and building efficient, reproducible workflows.</p>
+    </div>
   </section>
 
+  <!-- Research Experience -->
   <section id="experience">
-  <h2>Research Experience</h2>
+    <h2>Research Experience</h2>
+    <div class="research-grid">
 
-   <div class="research-grid">
+      <div class="research-card">
+        <div class="marker"></div>
+        <h3>Molecular Dynamics Simulations of Sputtering</h3>
+        <p>Atomic-scale modeling of plasma-surface interactions, including molecular sputtering of Be–D and W–D systems.</p>
+      </div>
 
-    <div class="research-card">
-      <div class="marker"></div>
-      <h3>Molecular Dynamics Simulations of Sputtering</h3>
-      <p>Atomic-scale modeling of plasma-surface interactions, including molecular sputtering of Be–D and W–D systems.</p>
+      <div class="research-card">
+        <div class="marker"></div>
+        <h3>Plasma-Wall Interactions in Fusion Devices</h3>
+        <p>Understanding erosion, surface modification, and sputtered species distribution in nuclear fusion environments.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="marker"></div>
+        <h3>High-Performance Computing & Big Data Analysis</h3>
+        <p>Development of scalable workflows and analysis pipelines for large-scale molecular dynamics simulations.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="marker"></div>
+        <h3>Machine Learning for Materials Research</h3>
+        <p>Application of ML models to predict properties and behavior of materials at the atomic and molecular scale.</p>
+      </div>
+
     </div>
-
-    <div class="research-card">
-      <div class="marker"></div>
-      <h3>Plasma-Wall Interactions in Fusion Devices</h3>
-      <p>Understanding erosion, surface modification, and sputtered species distribution in nuclear fusion environments.</p>
-    </div>
-
-    <div class="research-card">
-      <div class="marker"></div>
-      <h3>High-Performance Computing & Big Data Analysis</h3>
-      <p>Development of scalable workflows and analysis pipelines for large-scale molecular dynamics simulations.</p>
-    </div>
-
-    <div class="research-card">
-      <div class="marker"></div>
-      <h3>Machine Learning for Materials Research</h3>
-      <p>Application of ML models to predict properties and behavior of materials at the atomic and molecular scale.</p>
-    </div>
-
-  </div>
-</section>
-
-<style>
-  #research-interests h2 {
-    color: #1A318BFF;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 3px solid #1A318BFF;
-    padding-bottom: 4px;
-    margin-bottom: 2rem;
-  }
-
-  .research-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .research-card {
-    position: relative;
-    background-color: #f7f9ff;
-    border-radius: 10px;
-    padding: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .research-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-  }
-
-  .research-card .marker {
-    width: 16px;
-    height: 16px;
-    background-color: #1A318BFF;
-    border-radius: 50%;
-    position: absolute;
-    top: 16px;
-    left: 16px;
-  }
-
-  .research-card h3 {
-    margin-top: 0;
-    margin-left: 36px; /* space for marker */
-    font-size: 1.05rem;
-    color: #0b1a0b;
-  }
-
-  .research-card p {
-    margin-left: 36px; /* align text with title */
-    font-size: 0.95rem;
-    color: #333;
-  }
-  </style>
+  </section>
 
   <!-- Education -->
   <h2>Education</h2>
