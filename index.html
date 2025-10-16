@@ -1,54 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <title>Nima Fakhrayi Mofrad - CV</title>
+  <meta charset="UTF-8" />
+  <title>Nima Fakhrayi Mofrad — Academic CV</title>
   <style>
-    body { font-family: Lato, sans-serif; max-width: 900px; margin: auto; line-height: 1.5; }
-    h1, h2 { color: #1A318BFF; }
-    img.profile {
-      width: 150px;       /* adjust size */
-      height: 150px;
-      border-radius: 50%; /* makes it circular */
-      display: block;
-      margin: 20px auto;
-      object-fit: cover;
+    :root{
+      --accent:#1A318BFF;             /* Dark blue accent */
+      --content-width: 720px;         /* Content column width */
+      --outer-margin: 36px;           /* Top/bottom white space on screen */
+      --side-padding: 26px;           /* Left/right inner padding on screen */
+      --muted:#606870;
+    }
+
+    html, body { direction:ltr; text-align:left; }
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      max-width:var(--content-width);
+      margin:var(--outer-margin) auto;
+      padding:0 var(--side-padding);
+      line-height:1.6;
+      color:#111;
+      background:#fff;
+    }
+
+    /* Headings & type */
+    h1{ font-size:2rem; margin:0 0 .25rem 0; color:#0b1a0b; letter-spacing:0.2px; }
+    h2{ font-size:1.1rem; margin:1.25rem 0 .35rem; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; }
+    p, li{ font-size:.97rem; }
+    a{ color:#004d99; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    /* Fancy section divider */
+    .rule{ height:3px; width:72px; background:var(--accent); margin:.5rem 0 1rem; border-radius:2px; }
+
+    /* Masthead: name/title left, image right */
+    .masthead{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:20px;
+      align-items:center;
+      margin-bottom:8px;
+    }
+    .titleblock .subtitle{
+      color:var(--muted);
+      font-weight:600;
+      margin:0 0 .25rem 0;
+    }
+    .contact{ margin:.35rem 0 0 0; color:#333; font-size:.95rem; }
+    .contact a{ color:#0b5cab; }
+
+    .avatar{
+      width:128px; height:128px; object-fit:cover;
+      border-radius:50%;
+      border:3px solid #e6efe6;
+      box-shadow:0 4px 14px rgba(0,0,0,.08);
+    }
+
+    /* Bio callout */
+    .bio{
+      background:linear-gradient(180deg, #f5fbf5, #ffffff);
+      border:1px solid #e4efe4;
+      border-left:4px solid var(--accent);
+      padding:14px 16px;
+      border-radius:10px;
+      margin:10px 0 18px;
+    }
+    .bio p{ margin:.35rem 0; }
+
+    /* Lists tighter for CV */
+    ul{ margin:.25rem 0 .75rem 1.25rem; }
+    li{ margin:.15rem 0; }
+
+    /* Print/PDF styles */
+    @media print{
+      @page{ size:A4; margin:18mm 22mm; }
+      body{ max-width:none; margin:0; padding:0; }
+      a{ text-decoration:none; color:inherit; }
+      .bio{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      h2{ margin-top:10pt; }
+      .masthead{ grid-template-columns:1fr auto; gap:14pt; }
+      .avatar{ width:110px; height:110px; }
+      .rule{ margin:.3rem 0 .7rem; }
+    }
+
+    /* Small screens */
+    @media (max-width:560px){
+      .masthead{ grid-template-columns:1fr; text-align:left; }
+      .avatar{ width:112px; height:112px; justify-self:start; }
     }
   </style>
 </head>
 <body>
-  <!-- Add your image here -->
-  <img src="profile.jpg" alt="Nima Fakhrayi Mofrad" class="profile">
 
-  <h1>Nima Fakhrayi Mofrad - CV</h1>
-  <p style="text-align: justify;">I am a computational materials scientist with over <b>five years of experience</b> in scientific programming and high-performance computing. My expertise spans <b>molecular dynamics (MD) simulations</b>, <b>Monte Carlo simulations</b>, <b>density functional theory (DFT) calculations</b>, and <b>machine learning</b> applied to research in energy and materials. I am an experienced <b>Python programmer</b> with a strong background in <b>big data analysis</b>, enabling me to develop efficient, scalable, and reproducible workflows for computational materials research.</p>
-  <p>
-  Email: <a href="mailto:nima.fakhrayimofrad@aalto.fi">nima.fakhrayimofrad@aalto.fi</a> | 
-  <a href="https://www.linkedin.com/in/nima-fakhrayimofrad" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" 
-         alt="LinkedIn" 
-         style="width:16px; height:16px; vertical-align:middle;">
-  </a> |
-  <a href="https://github.com/NFMofrad" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" 
-         alt="GitHub" 
-         style="width:18px; height:18px; vertical-align:middle;">
-  </a>
-  </p>
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="titleblock">
+      <h1>Nima Fakhrayi Mofrad</h1>
+      <div class="subtitle">Computational Materials Scientist</div>
+      <div class="contact">
+        Email: <a href="mailto:nima.fakhrayimofrad@aalto.fi">nima.fakhrayimofrad@aalto.fi</a> |
+        <a href="https://www.linkedin.com/in/nima-fakhrayimofrad" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" 
+               alt="LinkedIn" style="width:18px;height:18px;vertical-align:middle;">
+        </a> |
+        <a href="https://github.com/NFMofrad" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" 
+               alt="GitHub" style="width:18px;height:18px;vertical-align:middle;">
+        </a>
+      </div>
+    </div>
+    <img class="avatar" src="profile.jpg" alt="Portrait of Nima Fakhrayi Mofrad" />
+  </header>
 
+  <div class="rule"></div>
+
+  <!-- Bio -->
+  <section class="bio" aria-label="Professional Summary">
+    <p>I am a computational materials scientist with over <b>five years of experience</b> in scientific programming and high-performance computing.</p>
+    <p>Expertise spans <strong>molecular dynamics (MD) simulations</strong>, <strong>Monte Carlo simulations</strong>, <strong>density functional theory (DFT) calculations</strong>, and <strong>machine learning</strong> applied to research in energy and materials.</p>
+    <p>I am an experienced <strong>Python programmer</strong> with a strong background in <strong>big data analysis</strong>, enabling me to develop efficient, scalable, and reproducible workflows for computational materials research.</p>
+  </section>
+
+  <!-- Education -->
   <h2>Education</h2>
   <p>Ph.D. Candidate in Computational Physics, Aalto University, 2023</p>
 
+  <!-- Research Interests -->
   <h2>Research Interests</h2>
   <ul>
     <li>Molecular Dynamics simulations of sputtering</li>
     <li>Be–D and W–D plasma–surface interactions</li>
   </ul>
 
+  <!-- Skills -->
   <h2>Skills</h2>
   <ul>
     <li>Python, DFT, LAMMPS, ASE, ORCA</li>
     <li>Data analysis and visualization</li>
   </ul>
+
 </body>
 </html>
