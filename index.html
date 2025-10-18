@@ -24,7 +24,7 @@
     }
 
     h1{ font-size:2rem; margin:0 0 .25rem 0; color:#0b1a0b; letter-spacing:0.2px; }
-    h2{ font-size:1.1rem; margin:1.25rem 0 .35rem; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; }
+    h2{ font-size:1.1rem; margin:1.25rem 0 .35rem; color:var(--accent); letter-spacing:.08em; }
     p, li{ font-size:.97rem; }
     a{ color:#004d99; text-decoration:none; }
     a:hover{ text-decoration:underline; }
@@ -216,30 +216,43 @@
 <body>
 
   <!-- Masthead -->
-  <header class="masthead">
-    <div class="titleblock">
-      <h1>Nima Fakhrayi Mofrad</h1>
-      <div class="subtitle">Computational Materials Scientist (Ph.D. Candidate)</div>
+<!-- Masthead -->
+<header class="masthead">
+  <div class="titleblock">
+    <h1>Nima Fakhrayi Mofrad</h1>
+    <div class="subtitle">Computational Materials Scientist (Ph.D. Candidate)</div>
 
-      <div class="contact">
-        Email: <a href="mailto:nima.fakhrayimofrad@aalto.fi">nima.fakhrayimofrad@aalto.fi</a>
+    <div class="contact">
+      Email: <a href="mailto:nima.fakhrayimofrad@aalto.fi">nima.fakhrayimofrad@aalto.fi</a>
 
-        <div class="social-card">
+      <!-- Social Media Cards -->
+      <div style="display:flex; gap:12px; margin-top:8px; flex-wrap:wrap;">
+        <div class="bio-card" style="padding:8px;">
           <a href="https://www.linkedin.com/in/nima-fakhrayimofrad" target="_blank">
             <img src="https://1000logos.net/wp-content/uploads/2023/01/LinkedIn-logo.png" alt="LinkedIn" class="social-logo">
           </a>
+        </div>
+        <div class="bio-card" style="padding:8px;">
           <a href="https://github.com/NFMofrad" target="_blank">
             <img src="https://pngimg.com/d/github_PNG24.png" alt="GitHub" class="social-logo">
           </a>
+        </div>
+        <div class="bio-card" style="padding:8px;">
           <a href="https://scholar.google.com/citations?user=mB8VHhwAAAAJ&hl=en" target="_blank">
             <img src="https://i.postimg.cc/Njj5Lzrd/kisspng-google-search-google-analytics-marketing-business-google-scholar-logo-5b4c8647b59f93-1976878.png" alt="Google Scholar" class="social-logo">
           </a>
         </div>
+        <div class="bio-card" style="padding:8px;">
+          <a href="https://orcid.org/0000-0002-7345-5423" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/ORCID_iD_icon.svg" alt="ORCID" class="social-logo">
+          </a>
+        </div>
       </div>
     </div>
+  </div>
 
-    <img class="avatar" src="profile.jpg" alt="Portrait of Nima Fakhrayi Mofrad" />
-  </header>
+  <img class="avatar" src="profile.jpg" alt="Portrait of Nima Fakhrayi Mofrad" />
+</header>
 
   <div class="rule"></div>
 
