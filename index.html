@@ -5,10 +5,10 @@
   <title>Nima Fakhrayi Mofrad — Academic CV</title>
   <style>
     :root{
-      --accent:#1A318BFF;             
-      --content-width: 890px;         
-      --outer-margin: 36px;           
-      --side-padding: 26px;           
+      --accent:#1A318BFF;
+      --content-width: 890px;
+      --outer-margin: 36px;
+      --side-padding: 26px;
       --muted:#606870;
     }
 
@@ -29,6 +29,8 @@
     a{ color:#004d99; text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
+    .rule{ height:3px; width:72px; background:var(--accent); margin:.5rem 0 1rem; border-radius:2px; }
+
     .masthead{
       display:grid;
       grid-template-columns: 1fr auto;
@@ -36,11 +38,13 @@
       align-items:center;
       margin-bottom:8px;
     }
+
     .titleblock .subtitle{
       color:var(--muted);
       font-weight:600;
       margin:0 0 .25rem 0;
     }
+
     .contact{ margin:.35rem 0 0 0; color:#333; font-size:.95rem; }
     .contact a{ color:#0b5cab; }
 
@@ -155,6 +159,35 @@
 
     .chip:hover { background: #e3e8ff; }
 
+    /* --- Social Media Card --- */
+    .social-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 14px;
+      margin-top: 8px;
+      background: #f7f9ff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .social-card a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease;
+    }
+
+    .social-card a:hover { transform: scale(1.05); }
+
+    .social-logo { height: 24px; width: auto; object-fit: contain; }
+
     ul{ margin:.25rem 0 .75rem 1.25rem; }
     li{ margin:.15rem 0; }
 
@@ -165,6 +198,7 @@
       h2{ margin-top:10pt; }
       .masthead{ grid-template-columns:1fr auto; gap:14pt; }
       .avatar{ width:110px; height:110px; }
+      .rule{ margin:.3rem 0 .7rem; }
     }
 
     @media (max-width:600px){
@@ -215,8 +249,7 @@
     <img class="avatar" src="profile.jpg" alt="Portrait of Nima Fakhrayi Mofrad" />
   </header>
 
-  <!-- Full-width rule -->
-  <div style="height:3px; background:var(--accent); width:100vw; margin:0; border-radius:2px;"></div>
+  <div class="rule"></div>
 
   <!-- Bio -->
   <section class="bio-section">
@@ -247,9 +280,7 @@
         <div class="research-card">
           <div class="marker"></div>
           <h3>Plasma-wall Interactions in Fusion Reactors</h3>
-          <img src="rovib_temp_Be.png" 
-               style="width:100%; height:250px; border-radius:8px; margin:10px 0;" 
-               alt="Rovibrational analysis of Be-D system" />
+          <img src="rovib_temp_Be.png" style="width:100%; height:250px; border-radius:8px; margin:10px 0;" alt="Rovibrational analysis of Be-D system" />
           <p style="text-align: justify;">Atomic-scale modeling of plasma-surface interactions, including molecular sputtering of Be–D and W–D systems.</p>
         </div>
       </a>
