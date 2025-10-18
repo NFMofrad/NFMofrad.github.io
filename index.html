@@ -130,6 +130,55 @@
       transform: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
+    /* --- Modern Skills layout matching bio-card style --- */
+.skills-card {
+  padding: 18px 18px 10px 18px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  margin-left: 30px; /* aligns content with text after the blue marker */
+}
+
+.skill-group h3 {
+  margin-bottom: 6px;
+  color: var(--accent);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0b1a0b;
+  background: #eef2ff;
+  border: 1px solid #dde3ff;
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.chip:hover {
+  background: #e3e8ff;
+}
+
+/* Mobile: stack skills in one column */
+@media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
     /* Lists */
     ul{ margin:.25rem 0 .75rem 1.25rem; }
@@ -169,7 +218,7 @@
       </a> |
       <a href="https://github.com/NFMofrad" target="_blank">
         <img src="https://pngimg.com/d/github_PNG24.png" 
-             alt="GitHub" style="width:45px;height:17px;vertical-align:middle;">
+             alt="GitHub" style="width:50px;height:16px;vertical-align:middle;">
       </a> |
       <a href="https://scholar.google.com/citations?user=mB8VHhwAAAAJ&hl=en" target="_blank">
         <img src="https://library.sfsu.edu/sites/default/files/images/google-scholar.png" 
@@ -264,14 +313,60 @@
 <!-- Skills -->
 <section id="skills">
   <h2>Skills</h2>
-  <div class="bio-card">
+  <div class="bio-card skills-card">
     <div class="marker"></div>
-    <ul>
-      <li>Python (NumPy, ASE, Matplotlib, Pandas)</li>
-      <li>DFT (VASP, ORCA) and MD (LAMMPS) simulations</li>
-      <li>Data analysis, automation, and visualization</li>
-      <li>High-performance computing workflows</li>
-    </ul>
+
+    <div class="skills-grid">
+      <!-- Programming -->
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Bash</span>
+          <span class="chip">C++</span>
+          <span class="chip">MATLAB</span>
+        </div>
+      </div>
+
+      <!-- Simulation & Materials -->
+      <div class="skill-group">
+        <h3>Simulation &amp; Materials</h3>
+        <div class="chips">
+          <span class="chip">LAMMPS</span>
+          <span class="chip">ASE</span>
+          <span class="chip">ORCA</span>
+          <span class="chip">VASP</span>
+          <span class="chip">DFT</span>
+          <span class="chip">MLIP</span>
+        </div>
+      </div>
+
+      <!-- Data & Visualization -->
+      <div class="skill-group">
+        <h3>Data &amp; Visualization</h3>
+        <div class="chips">
+          <span class="chip">NumPy</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">Matplotlib</span>
+          <span class="chip">Seaborn</span>
+          <span class="chip">scikit-learn</span>
+          <span class="chip">Jupyter</span>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="skill-group">
+        <h3>Tools &amp; Workflow</h3>
+        <div class="chips">
+          <span class="chip">Linux</span>
+          <span class="chip">Git</span>
+          <span class="chip">Overleaf</span>
+          <span class="chip">VMD</span>
+          <span class="chip">OVITO</span>
+          <span class="chip">Inkscape</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
