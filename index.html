@@ -85,6 +85,18 @@
       color: #333;
       line-height: 1.5;
     }
+    .bio-card ul {
+      margin-left: 30px;
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+      color: #333;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .bio-card li {
+      margin-bottom: 0.3rem;
+    }
 
     .research-card h3 {
       margin-top: 0;
@@ -226,23 +238,42 @@
     </div>
   </section>
 
-  <!-- Education -->
+<!-- Education -->
+<section id="education">
   <h2>Education</h2>
-  <p>Ph.D. Candidate in Computational Physics, Aalto University, 2023</p>
+  <div class="bio-card">
+    <div class="marker"></div>
+    <p><strong>Ph.D. Candidate</strong> in Computational Physics, Aalto University (2023–present)</p>
+  </div>
+</section>
 
-  <!-- Research Interests -->
+<!-- Research Interests -->
+<section id="interests">
   <h2>Research Interests</h2>
-  <ul>
-    <li>Molecular Dynamics simulations of sputtering</li>
-    <li>Be–D and W–D plasma–surface interactions</li>
-  </ul>
+  <div class="bio-card">
+    <div class="marker"></div>
+    <ul>
+      <li>Molecular Dynamics simulations of sputtering</li>
+      <li>Be–D and W–D plasma–surface interactions</li>
+      <li>Chemically assisted physical sputtering (CAPS)</li>
+      <li>Machine-learning interatomic potentials</li>
+    </ul>
+  </div>
+</section>
 
-  <!-- Skills -->
+<!-- Skills -->
+<section id="skills">
   <h2>Skills</h2>
-  <ul>
-    <li>Python, DFT, LAMMPS, ASE, ORCA</li>
-    <li>Data analysis and visualization</li>
-  </ul>
+  <div class="bio-card">
+    <div class="marker"></div>
+    <ul>
+      <li>Python (NumPy, ASE, Matplotlib, Pandas)</li>
+      <li>DFT (VASP, ORCA) and MD (LAMMPS) simulations</li>
+      <li>Data analysis, automation, and visualization</li>
+      <li>High-performance computing workflows</li>
+    </ul>
+  </div>
+</section>
 
 </body>
 </html>
