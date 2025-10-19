@@ -237,28 +237,54 @@
       .skills-grid{ grid-template-columns:1fr; }
     }
 
-    /* Subprojects inside a research card */
-.subprojects{ display:grid; gap:.5rem; margin-top:.5rem; }
-.subproject{
-  display:flex; align-items:center; gap:.5rem;
-  background: #fffbea; /* light warm yellow background */
-  border: 1px solid #f5e38b; /* soft yellow border */
-  border-radius:10px;
-  padding:.45rem .6rem;
-  box-shadow:0 1px 3px rgba(0,0,0,.05);
-  text-decoration:none; color:inherit;
-  transition:transform .15s, box-shadow .15s;
+/* Subprojects inside a research card */
+.subprojects {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
-.subproject:hover{
-  transform:translateY(-1px);
-  text-decoration:none;
-  background: #fff4c2; /* slightly deeper yellow on hover */
-  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.15);
+
+.subproject {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #e6f7f5;        /* soft teal background */
+  border: 1px solid #b3e0db;  /* slightly darker teal border */
+  border-radius: 10px;
+  padding: 0.45rem 0.6rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: #056d67;              /* muted teal text for contrast */
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
 }
-.subproject .icon{ width:16px; height:16px; flex:0 0 auto; opacity:.75 }
-.subproject .title{ font-weight:600; color: #7a6a00; /* muted yellow-brown text for contrast */ }
-.subproject .spacer{ flex:1 1 auto; }
-.subproject .ext{ opacity:.6; color: #b8a200; /* matching tone for the arrow */ }
+
+.subproject:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+  background: #cceeee;         /* slightly deeper teal on hover */
+  box-shadow: 0 4px 10px rgba(5, 109, 103, 0.15);
+}
+
+.subproject .icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  opacity: 0.75;
+}
+
+.subproject .title {
+  font-weight: 600;
+  color: #056d67;              /* same muted teal for title */
+}
+
+.subproject .spacer {
+  flex: 1 1 auto;
+}
+
+.subproject .ext {
+  opacity: 0.6;
+  color: #04887e;              /* matching tone for arrow or extra icon */
+}
   </style>
 </head>
 <body>
@@ -504,7 +530,7 @@
         </div>
         <div class="chips">
           <span class="chip">Linux</span><span class="chip">LaTeX</span>
-          <span class="chip">VMD</span><span class="chip">OVITO</span>
+          <span class="chip">VMD</span><span class="chip">OVITO</span><span class="chip">Overleaf</span><span class="chip">Inkscape</span>
           <span class="chip">MS Office</span><span class="chip">Git</span>
         </div>
       </div>
