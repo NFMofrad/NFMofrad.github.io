@@ -212,8 +212,8 @@
 .subprojects{ display:grid; gap:.5rem; margin-top:.5rem; }
 .subproject{
   display:flex; align-items:center; gap:.5rem;
-  background:var(--subproject-bg);
-  border:1px solid var(--subproject-border);
+  background: #fffbea; /* light warm yellow background */
+  border: 1px solid #f5e38b; /* soft yellow border */
   border-radius:10px;
   padding:.45rem .6rem;
   box-shadow:0 1px 3px rgba(0,0,0,.05);
@@ -222,14 +222,14 @@
 }
 .subproject:hover{
   transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
   text-decoration:none;
-  background:var(--subproject-bg-hover);
+  background: #fff4c2; /* slightly deeper yellow on hover */
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.15);
 }
 .subproject .icon{ width:16px; height:16px; flex:0 0 auto; opacity:.75 }
-.subproject .title{ font-weight:600; }
+.subproject .title{ font-weight:600; color: #7a6a00; /* muted yellow-brown text for contrast */ }
 .subproject .spacer{ flex:1 1 auto; }
-.subproject .ext{ opacity:.6 }
+.subproject .ext{ opacity:.6; color: #b8a200; /* matching tone for the arrow */ }
   </style>
 </head>
 <body>
