@@ -121,43 +121,72 @@
       color: inherit;
     }
 
-    .skills-card { padding: 18px 18px 10px 18px; }
+    .skills.card {
+  background-color: #f7f9ff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px 24px;
-      margin-left: 30px;
-    }
+.skills.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
 
-    .skill-group h3 {
-      margin-bottom: 6px;
-      color: var(--accent);
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
 
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+.skill-group .sg-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-weight: 700;
+  color: var(--accent-ink);
+}
 
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.22rem 0.6rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #0b1a0b;
-      background: #eef2ff;
-      border: 1px solid #dde3ff;
-      border-radius: 999px;
-      transition: background 0.2s ease;
-    }
+.sg-title svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--accent-ink);
+  opacity: 0.9;
+}
 
-    .chip:hover { background: #e3e8ff; }
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  background: #eef1ff;
+  border: 1px solid #e3e8ff;
+  font-size: 0.92rem;
+  color: #16286b;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.chip svg {
+  width: 14px;
+  height: 14px;
+  fill: #16286b;
+  opacity: 0.9;
+}
+
+.chip:hover {
+  background: #e6ecff;
+}
+
 
     /* --- Social Media Card --- */
     .social-card {
@@ -424,57 +453,65 @@
 </section>
 
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="bio-card skills-card">
-      <div class="marker"></div>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h3>Programming</h3>
-          <div class="chips">
-            <span class="chip">Python</span>
-            <span class="chip">Bash</span>
-            <span class="chip">C++</span>
-            <span class="chip">MATLAB</span>
-          </div>
+<!-- Skills -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="card skills">
+    <div class="skills-grid">
+
+      <!-- Programming -->
+      <div class="skill-group">
+        <div class="sg-title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.7 17.7 3 12l5.7-5.7 1.4 1.4L5.8 12l4.3 4.3-1.4 1.4Zm6.6 0-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4L21 12l-5.7 5.7Z"/></svg>
+          <span>Programming</span>
         </div>
-        <div class="skill-group">
-          <h3>Simulation &amp; Materials</h3>
-          <div class="chips">
-            <span class="chip">LAMMPS</span>
-            <span class="chip">ASE</span>
-            <span class="chip">CP2K</span>
-            <span class="chip">VASP</span>
-            <span class="chip">DFT</span>
-            <span class="chip">MLIP</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Data &amp; Visualization</h3>
-          <div class="chips">
-            <span class="chip">NumPy</span>
-            <span class="chip">Pandas</span>
-            <span class="chip">Matplotlib</span>
-            <span class="chip">Seaborn</span>
-            <span class="chip">scikit-learn</span>
-            <span class="chip">Jupyter</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Tools &amp; Workflow</h3>
-          <div class="chips">
-            <span class="chip">Linux</span>
-            <span class="chip">Git</span>
-            <span class="chip">Overleaf</span>
-            <span class="chip">VMD</span>
-            <span class="chip">OVITO</span>
-            <span class="chip">Inkscape</span>
-          </div>
+        <div class="chips">
+          <span class="chip"><svg viewBox="0 0 24 24"><path d="M9 3h4a4 4 0 0 1 4 4v2H9a2 2 0 0 0-2 2v3H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h2Z"/></svg>Python</span>
+          <span class="chip">Bash</span>
+          <span class="chip">C++</span>
+          <span class="chip">MATLAB</span>
         </div>
       </div>
+
+      <!-- Materials & Simulation -->
+      <div class="skill-group">
+        <div class="sg-title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v2h-1v3.6l5.8 9.5A2 2 0 0 1 18 21H6a2 2 0 0 1-1.8-2.9L10 8.6V5H9V3Zm1.7 7-5.3 8.6a.5.5 0 0 0 .4.7h12a.5.5 0 0 0 .4-.7L13.9 10H10.7Z"/></svg>
+          <span>Materials &amp; Simulation</span>
+        </div>
+        <div class="chips">
+          <span class="chip">LAMMPS</span><span class="chip">GROMACS</span><span class="chip">VASP</span><span class="chip">FHI-aims</span>
+          <span class="chip">MLIP</span><span class="chip">USPEX</span><span class="chip">ORCA</span><span class="chip">Schrödinger&nbsp;Maestro</span>
+        </div>
+      </div>
+
+      <!-- Data Science -->
+      <div class="skill-group">
+        <div class="sg-title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 1.57 9 3.5S17 10 12 10 3 8.43 3 6.5 7 3 12 3Zm9 5v3.5C21 13.43 17 15 12 15s-9-1.57-9-3.5V8c1.9 1.52 5.6 2.5 9 2.5S19.1 9.52 21 8Zm0 6v3.5C21 19.43 17 21 12 21s-9-1.57-9-3.5V14c1.9 1.52 5.6 2.5 9 2.5s7.1-.98 9-2.5Z"/></svg>
+          <span>Data Science</span>
+        </div>
+        <div class="chips">
+          <span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">scikit-learn</span><span class="chip">Matplotlib</span><span class="chip">Jupyter</span>
+        </div>
+      </div>
+
+      <!-- Other -->
+      <div class="skill-group">
+        <div class="sg-title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v3h-4v2h-2v-2H8v2H6v-2H2V9a2 2 0 0 1 2-2h3Z"/></svg>
+          <span>Other</span>
+        </div>
+        <div class="chips">
+          <span class="chip">Linux</span><span class="chip">LaTeX</span><span class="chip">PyCharm</span><span class="chip">VESTA</span>
+          <span class="chip">VMD</span><span class="chip">OVITO</span><span class="chip">Overleaf</span><span class="chip">Inkscape</span>
+          <span class="chip">MS Office</span><span class="chip">Git</span>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
 </body>
 </html>
