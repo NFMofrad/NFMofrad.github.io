@@ -285,6 +285,38 @@
   opacity: 0.6;
   color: #04887e;              /* matching tone for arrow or extra icon */
 }
+
+/* Per-card skills */
+.card-skills {
+  margin-top: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #e0e5ff;
+}
+
+.card-skills .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center; /* Center the chips horizontally */
+}
+
+.card-skills .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  background: #eef1ff;
+  border: 1px solid #e3e8ff;
+  font-size: 0.9rem;
+  color: #16286b;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.card-skills .chip:hover {
+  background: #e6ecff;
+}
   </style>
 </head>
 <body>
@@ -347,7 +379,7 @@
     <div class="research-card">
       <div class="marker"></div>
       <h3>Mechanical Properties of Polyolefin Chains</h3>
-      <video autoplay loop muted playsinline style="width:100%;height: auto;;border-radius:8px;">
+      <video autoplay loop muted playsinline style="width:100%;height: auto;border-radius:8px;">
         <source src="PS.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -355,61 +387,49 @@
         Exploring the mechanical response of polyolefin chains using reactive Langevin dynamics simulations with stereochemical control.
       </p>
 
-      <!-- Subproject link -->
-      <div class="subprojects" role="list" aria-label="Related repositories">
-    <a class="subproject" role="listitem"
-       href="https://github.com/NFMofrad/Sputtering"
-       target="_blank" rel="noopener"
-       aria-label="Polymer Chain Analysis — GitHub repository">
-      <!-- GitHub icon (inline SVG) -->
-      <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
-        <path d="M8 .2a7.8 7.8 0 0 0-2.47 15.2c.39.07.53-.17.53-.38
-                 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.24-.48-.94-.82-1.13
-                 -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
-                 .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
-                 -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.54 7.54 0 0 1 4 0
-                 c1.52-1.03 2.19-.82 2.19-.82.45 1.1.17 1.92.09 2.12.51.56.82 1.28.82 2.15
-                 0 3.07-1.87 3.74-3.65 3.94.29.25.54.73.54 1.47 0 1.06-.01 1.91-.01 2.17
-                 0 .21.14.46.54.38A7.8 7.8 0 0 0 8 .2z"/>
-      </svg>
-      <span class="title">Polymer Chain Analysis</span>
-      <span class="spacer"></span>
-      <span class="ext" aria-hidden="true">↗</span>
-    </a>
-  </div>
+      <div class="subprojects">
+        <a class="subproject" href="https://github.com/NFMofrad/Sputtering" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 16 16"><path d="M8 .2a7.8 7.8..."/></svg>
+          <span class="title">Polymer Chain Analysis</span>
+          <span class="spacer"></span><span class="ext">↗</span>
+        </a>
+      </div>
+
+      <div class="card-skills">
+        <div class="chips">
+          <span class="chip">Reactive MD</span>
+          <span class="chip">Polymer Simulation</span>
+          <span class="chip">LAMMPS</span>
+          <span class="chip">Python</span>
+        </div>
+      </div>
     </div>
 
     <!-- CARD 2 -->
     <div class="research-card">
       <div class="marker"></div>
       <h3>Plasma-wall Interactions in Fusion Reactors</h3>
-      <img src="rovib_temp_Be.png" alt="Rovibrational analysis of Be-D system" style="width:100%;height: auto;;border-radius:8px;">
+      <img src="rovib_temp_Be.png" alt="Rovibrational analysis of Be-D system" style="width:100%;height:auto;border-radius:8px;">
       <p style="text-align: justify;">
         Atomic-scale modeling of plasma-surface interactions, including molecular sputtering of Be–D and W–D systems.
       </p>
 
-      <!-- Subproject link -->
-    <div class="subprojects" role="list" aria-label="Related repositories">
-    <a class="subproject" role="listitem"
-       href="https://github.com/NFMofrad/Sputtering"
-       target="_blank" rel="noopener"
-       aria-label="PWI Analysis — GitHub repository">
-      <!-- GitHub icon (inline SVG) -->
-      <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
-        <path d="M8 .2a7.8 7.8 0 0 0-2.47 15.2c.39.07.53-.17.53-.38
-                 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.24-.48-.94-.82-1.13
-                 -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
-                 .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
-                 -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.54 7.54 0 0 1 4 0
-                 c1.52-1.03 2.19-.82 2.19-.82.45 1.1.17 1.92.09 2.12.51.56.82 1.28.82 2.15
-                 0 3.07-1.87 3.74-3.65 3.94.29.25.54.73.54 1.47 0 1.06-.01 1.91-.01 2.17
-                 0 .21.14.46.54.38A7.8 7.8 0 0 0 8 .2z"/>
-      </svg>
-      <span class="title">PWI Analysis</span>
-      <span class="spacer"></span>
-      <span class="ext" aria-hidden="true">↗</span>
-    </a>
-  </div>
+      <div class="subprojects">
+        <a class="subproject" href="https://github.com/NFMofrad/Sputtering" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 16 16"><path d="M8 .2a7.8 7.8..."/></svg>
+          <span class="title">PWI Analysis</span>
+          <span class="spacer"></span><span class="ext">↗</span>
+        </a>
+      </div>
+
+      <div class="card-skills">
+        <div class="chips">
+          <span class="chip">LAMMPS</span>
+          <span class="chip">Python</span>
+          <span class="chip">Data Analysis</span>
+          <span class="chip">DFT</span>
+        </div>
+      </div>
     </div>
 
     <!-- CARD 3 -->
@@ -420,27 +440,23 @@
         Development of scalable workflows and analysis pipelines for large-scale molecular dynamics simulations.
       </p>
 
-      <div class="subprojects" role="list" aria-label="Related repositories">
-    <a class="subproject" role="listitem"
-       href="https://github.com/NFMofrad/Sputtering"
-       target="_blank" rel="noopener"
-       aria-label="Data Analysis — GitHub repository">
-      <!-- GitHub icon (inline SVG) -->
-      <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
-        <path d="M8 .2a7.8 7.8 0 0 0-2.47 15.2c.39.07.53-.17.53-.38
-                 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.24-.48-.94-.82-1.13
-                 -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
-                 .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
-                 -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.54 7.54 0 0 1 4 0
-                 c1.52-1.03 2.19-.82 2.19-.82.45 1.1.17 1.92.09 2.12.51.56.82 1.28.82 2.15
-                 0 3.07-1.87 3.74-3.65 3.94.29.25.54.73.54 1.47 0 1.06-.01 1.91-.01 2.17
-                 0 .21.14.46.54.38A7.8 7.8 0 0 0 8 .2z"/>
-      </svg>
-      <span class="title">Data Analysis</span>
-      <span class="spacer"></span>
-      <span class="ext" aria-hidden="true">↗</span>
-    </a>
-  </div>
+      <div class="subprojects">
+        <a class="subproject" href="https://github.com/NFMofrad/Sputtering" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 16 16"><path d="M8 .2a7.8 7.8..."/></svg>
+          <span class="title">Data Analysis</span>
+          <span class="spacer"></span><span class="ext">↗</span>
+        </a>
+      </div>
+
+      <div class="card-skills">
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">NumPy</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">Matplotlib</span>
+          <span class="chip">HPC</span>
+        </div>
+      </div>
     </div>
 
     <!-- CARD 4 -->
@@ -451,90 +467,24 @@
         Application of ML models to predict properties and behavior of materials at the atomic and molecular scale.
       </p>
 
-      <div class="subprojects" role="list" aria-label="Related repositories">
-    <a class="subproject" role="listitem"
-       href="https://github.com/NFMofrad/Sputtering"
-       target="_blank" rel="noopener"
-       aria-label="MLIP — GitHub repository">
-      <!-- GitHub icon (inline SVG) -->
-      <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
-        <path d="M8 .2a7.8 7.8 0 0 0-2.47 15.2c.39.07.53-.17.53-.38
-                 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.24-.48-.94-.82-1.13
-                 -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
-                 .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
-                 -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.54 7.54 0 0 1 4 0
-                 c1.52-1.03 2.19-.82 2.19-.82.45 1.1.17 1.92.09 2.12.51.56.82 1.28.82 2.15
-                 0 3.07-1.87 3.74-3.65 3.94.29.25.54.73.54 1.47 0 1.06-.01 1.91-.01 2.17
-                 0 .21.14.46.54.38A7.8 7.8 0 0 0 8 .2z"/>
-      </svg>
-      <span class="title">MLIP</span>
-      <span class="spacer"></span>
-      <span class="ext" aria-hidden="true">↗</span>
-    </a>
-  </div>
+      <div class="subprojects">
+        <a class="subproject" href="https://github.com/NFMofrad/Sputtering" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 16 16"><path d="M8 .2a7.8 7.8..."/></svg>
+          <span class="title">MLIP</span>
+          <span class="spacer"></span><span class="ext">↗</span>
+        </a>
+      </div>
+
+      <div class="card-skills">
+        <div class="chips">
+          <span class="chip">Machine Learning</span>
+          <span class="chip">scikit-learn</span>
+          <span class="chip">Python</span>
+          <span class="chip">Materials Informatics</span>
+        </div>
+      </div>
     </div>
 
-  </div>
-</section>
-
-
-<!-- Skills -->
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="card skills">
-    <div class="skills-grid">
-
-      <!-- Programming -->
-      <div class="skill-group">
-        <div class="sg-title">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.7 17.7 3 12l5.7-5.7 1.4 1.4L5.8 12l4.3 4.3-1.4 1.4Zm6.6 0-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4L21 12l-5.7 5.7Z"/></svg>
-          <span>Programming</span>
-        </div>
-        <div class="chips">
-          <span class="chip"><svg viewBox="0 0 24 24"><path d="M9 3h4a4 4 0 0 1 4 4v2H9a2 2 0 0 0-2 2v3H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h2Z"/></svg>Python</span>
-          <span class="chip">Bash</span>
-          <span class="chip">C++</span>
-          <span class="chip">MATLAB</span>
-        </div>
-      </div>
-
-      <!-- Materials & Simulation -->
-      <div class="skill-group">
-        <div class="sg-title">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v2h-1v3.6l5.8 9.5A2 2 0 0 1 18 21H6a2 2 0 0 1-1.8-2.9L10 8.6V5H9V3Zm1.7 7-5.3 8.6a.5.5 0 0 0 .4.7h12a.5.5 0 0 0 .4-.7L13.9 10H10.7Z"/></svg>
-          <span>Materials &amp; Simulation</span>
-        </div>
-        <div class="chips">
-          <span class="chip">LAMMPS</span><span class="chip">VASP</span><span class="chip">SDTrimSP</span><span class="chip">ERO2.0</span>
-          <span class="chip">MLIP</span><span class="chip">Schrödinger&nbsp;Maestro</span>
-        </div>
-      </div>
-
-      <!-- Data Science -->
-      <div class="skill-group">
-        <div class="sg-title">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 1.57 9 3.5S17 10 12 10 3 8.43 3 6.5 7 3 12 3Zm9 5v3.5C21 13.43 17 15 12 15s-9-1.57-9-3.5V8c1.9 1.52 5.6 2.5 9 2.5S19.1 9.52 21 8Zm0 6v3.5C21 19.43 17 21 12 21s-9-1.57-9-3.5V14c1.9 1.52 5.6 2.5 9 2.5s7.1-.98 9-2.5Z"/></svg>
-          <span>Data Science</span>
-        </div>
-        <div class="chips">
-          <span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">scikit-learn</span><span class="chip">Matplotlib</span><span class="chip">Jupyter</span>
-        </div>
-      </div>
-
-      <!-- Other -->
-      <div class="skill-group">
-        <div class="sg-title">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v3h-4v2h-2v-2H8v2H6v-2H2V9a2 2 0 0 1 2-2h3Z"/></svg>
-          <span>Other</span>
-        </div>
-        <div class="chips">
-          <span class="chip">Linux</span><span class="chip">LaTeX</span>
-          <span class="chip">VMD</span><span class="chip">OVITO</span><span class="chip">Overleaf</span><span class="chip">Inkscape</span>
-          <span class="chip">MS Office</span><span class="chip">Git</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
