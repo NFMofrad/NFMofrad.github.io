@@ -5,61 +5,66 @@
   <title>Nima Fakhrayi Mofrad — Academic CV</title>
   <style>
     :root{
-      --accent:#1A318BFF;
+      --accent:#1A318B;
+      --accent-ink:#16286b;
+      --muted:#606870;
+      --card-bg:#f7f9ff;
       --content-width: 890px;
       --outer-margin: 36px;
       --side-padding: 26px;
-      --muted:#606870;
+      --radius:14px;
+      --shadow: 0 10px 28px rgba(0,0,0,.06);
+      --shadow-hover: 0 12px 32px rgba(0,0,0,.09);
     }
 
     html, body { direction:ltr; text-align:left; }
-    body{
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-      max-width:var(--content-width);
-      margin:var(--outer-margin) auto;
-      padding:0 var(--side-padding);
-      line-height:1.6;
-      color:#111;
-      background:#fff;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      max-width: var(--content-width);
+      margin: var(--outer-margin) auto;
+      padding: 0 var(--side-padding);
+      line-height: 1.6;
+      color: #111;
+      background: #fff;
     }
 
-    h1{ font-size:2rem; margin:0 0 .25rem 0; color:#0b1a0b; letter-spacing:0.2px; }
-    h2{ font-size:1.1rem; margin:1.25rem 0 .35rem; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; }
-    p, li{ font-size:.97rem; }
-    a{ color:#004d99; text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+    h1 { font-size:2rem; margin:0 0 .25rem 0; color:#0b1a0b; letter-spacing:0.2px; }
+    h2 { font-size:1.1rem; margin:1.25rem 0 .35rem; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; }
+    p, li { font-size:.97rem; }
+    a { color:#004d99; text-decoration:none; }
+    a:hover { text-decoration:underline; }
 
-    .rule{ height:3px; width:72px; background:var(--accent); margin:.5rem 0 1rem; border-radius:2px; }
+    .rule { height:3px; width:72px; background:var(--accent); margin:.5rem 0 1rem; border-radius:2px; }
 
-    .masthead{
+    .masthead {
       display:grid;
       grid-template-columns: 1fr auto;
       gap:20px;
-      align-items:center;
+      align-items:start;
       margin-bottom:8px;
     }
 
-    .titleblock .subtitle{
-      color:var(--muted);
-      font-weight:600;
-      margin:0 0 .25rem 0;
+    .titleblock .subtitle {
+      color: var(--muted);
+      font-weight: 600;
+      margin: 0 0 .25rem 0;
     }
 
-    .contact{ margin:.35rem 0 0 0; color:#333; font-size:.95rem; }
-    .contact a{ color:#0b5cab; }
+    .contact { margin:.35rem 0 0; color:#333; font-size:.95rem; }
+    .contact a { color:#0b5cab; }
 
-    .avatar{
-      width:150px;
-      height:150px;
-      object-fit:cover;
+    .avatar {
+      width:162px; height:162px; object-fit:cover;
       border-radius:50%;
-      border:3px solid #e6efe6;
-      box-shadow:0 4px 14px rgba(0,0,0,.08);
+      border:3px solid #e6ebfb;
+      box-shadow:0 6px 18px rgba(0,0,0,.07);
+      justify-self:end;
+      align-self:start;
     }
 
     .bio-card, .research-card {
       position: relative;
-      background-color: #f7f9ff;
+      background-color: var(--card-bg);
       border-radius: 10px;
       padding: 16px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
@@ -74,9 +79,8 @@
       box-shadow: 0 4px 14px rgba(0,0,0,0.15);
     }
 
-    .bio-card .marker, .research-card .marker {
-      width: 16px;
-      height: 16px;
+    .marker {
+      width:16px; height:16px;
       background-color: var(--accent);
       border-radius: 50%;
       position: absolute;
@@ -91,136 +95,46 @@
       line-height: 1.5;
     }
 
-    .bio-card ul {
-      margin-left: 30px;
-      margin-top: 0.5rem;
-      margin-bottom: 0;
-      color: #333;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
+    .bio-card ul { margin-left:30px; margin-top:0.5rem; margin-bottom:0; color:#333; font-size:.95rem; line-height:1.5; }
+    .bio-card li { margin-bottom:0.3rem; }
 
-    .bio-card li { margin-bottom: 0.3rem; }
+    .research-card h3 { margin-top:0; margin-left:30px; font-size:1.05rem; color:#0b1a0b; }
 
-    .research-card h3 {
-      margin-top: 0;
-      margin-left: 30px;
-      font-size: 1.05rem;
-      color: #0b1a0b;
-    }
+    .research-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:1.5rem; }
 
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
+    .research-card-link { display:block; text-decoration:none; color:inherit; }
 
-    .research-card-link {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
+    .skills.card { background-color: var(--card-bg); border-radius:10px; padding:16px; box-shadow:0 2px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .skills.card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
-    .skills.card {
-  background-color: #f7f9ff;
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px 20px; }
 
-.skills.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
+    .skill-group .sg-title { display:flex; align-items:center; gap:8px; margin:0 0 8px; font-weight:700; color:var(--accent-ink); }
+    .sg-title svg { width:18px; height:18px; fill:var(--accent-ink); opacity:0.9; }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 20px;
-}
+    .chips { display:flex; flex-wrap:wrap; gap:8px; }
+    .chip { display:inline-flex; align-items:center; gap:6px; padding:.22rem .55rem; border-radius:999px; background:#eef1ff; border:1px solid #e3e8ff; font-size:.92rem; color:#16286b; font-weight:700; transition: background .2s ease; }
+    .chip:hover { background:#e6ecff; }
+    .chip svg { width:14px; height:14px; fill:#16286b; opacity:0.9; }
 
-.skill-group .sg-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 8px;
-  font-weight: 700;
-  color: var(--accent-ink);
-}
+    .social { display:flex; gap:10px; align-items:center; margin:.35rem 0 .2rem; transition: opacity .5s ease, transform .5s ease; }
+    .social a { display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:999px; background:#eef1ff; border:1px solid #e3e8ff; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
+    .social a:hover { transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.08); background:#e6ecff; }
+    .social svg { width:18px; height:18px; fill:var(--accent-ink); }
+    .social.hidden { opacity:0; transform: translateY(-6px); pointer-events:none; }
 
-.sg-title svg {
-  width: 18px;
-  height: 18px;
-  fill: var(--accent-ink);
-  opacity: 0.9;
-}
+    .subprojects { display:grid; gap:.5rem; margin-top:.5rem; }
+    .subproject { display:flex; align-items:center; gap:.5rem; background:#e6f7f5; border:1px solid #b3e0db; border-radius:10px; padding:.45rem .6rem; box-shadow:0 1px 3px rgba(0,0,0,0.05); text-decoration:none; color:#056d67; transition: transform .15s, box-shadow .15s, background .15s; }
+    .subproject:hover { transform:translateY(-1px); background:#cceeee; box-shadow:0 4px 10px rgba(5,109,103,.15); }
+    .subproject .icon { width:16px; height:16px; flex:0 0 auto; opacity:.75; }
+    .subproject .title { font-weight:600; color:#056d67; }
+    .subproject .spacer { flex:1 1 auto; }
+    .subproject .ext { opacity:.6; color:#04887e; }
 
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+    .card-skills { margin-top:1rem; padding-top:.6rem; border-top:1px solid #e0e5ff; }
+    .card-skills .chips { justify-content:center; }
 
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0.22rem 0.55rem;
-  border-radius: 999px;
-  background: #eef1ff;
-  border: 1px solid #e3e8ff;
-  font-size: 0.92rem;
-  color: #16286b;
-  font-weight: 700;
-  transition: background 0.2s ease;
-}
-
-.chip svg {
-  width: 14px;
-  height: 14px;
-  fill: #16286b;
-  opacity: 0.9;
-}
-
-.chip:hover {
-  background: #e6ecff;
-}
-
-
-    /* --- Social Media Card --- */
-    .social-card {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      padding: 8px 14px;
-      margin-top: 8px;
-      background: #f7f9ff;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .social-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .social-card a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.25s ease;
-    }
-
-    .social-card a:hover { transform: scale(1.05); }
-
-    .social-logo { height: 24px; width: auto; object-fit: contain; }
-
-    ul{ margin:.25rem 0 .75rem 1.25rem; }
-    li{ margin:.15rem 0; }
-
-    @media print{
+    @media print {
       @page{ size:A4; margin:18mm 22mm; }
       body{ max-width:none; margin:0; padding:0; }
       a{ text-decoration:none; color:inherit; }
@@ -228,147 +142,65 @@
       .masthead{ grid-template-columns:1fr auto; gap:14pt; }
       .avatar{ width:110px; height:110px; }
       .rule{ margin:.3rem 0 .7rem; }
+      .card, .project-card{ box-shadow:none; background:#fff; transform:none; }
     }
 
-    @media (max-width:600px){
-      .masthead{ grid-template-columns:1fr; text-align:left; }
-      .avatar{ width:112px; height:112px; justify-self:start; }
-      .research-grid{ grid-template-columns:1fr; }
-      .skills-grid{ grid-template-columns:1fr; }
-    }
+    @media (max-width:760px){ .projects-grid{ grid-template-columns:1fr; } .twocol{ grid-template-columns:1fr; } .skills-grid{ grid-template-columns:1fr; } }
+    @media (max-width:560px){ .masthead{ grid-template-columns:1fr; text-align:left; } .avatar{ width:112px; height:112px; } }
 
-/* Subprojects inside a research card */
-.subprojects {
-  display: grid;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.subproject {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #e6f7f5;        /* soft teal background */
-  border: 1px solid #b3e0db;  /* slightly darker teal border */
-  border-radius: 10px;
-  padding: 0.45rem 0.6rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  text-decoration: none;
-  color: #056d67;              /* muted teal text for contrast */
-  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
-}
-
-.subproject:hover {
-  transform: translateY(-1px);
-  text-decoration: none;
-  background: #cceeee;         /* slightly deeper teal on hover */
-  box-shadow: 0 4px 10px rgba(5, 109, 103, 0.15);
-}
-
-.subproject .icon {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 auto;
-  opacity: 0.75;
-}
-
-.subproject .title {
-  font-weight: 600;
-  color: #056d67;              /* same muted teal for title */
-}
-
-.subproject .spacer {
-  flex: 1 1 auto;
-}
-
-.subproject .ext {
-  opacity: 0.6;
-  color: #04887e;              /* matching tone for arrow or extra icon */
-}
-
-/* Per-card skills */
-.card-skills {
-  margin-top: 1rem;
-  padding-top: 0.6rem;
-  border-top: 1px solid #e0e5ff;
-}
-
-.card-skills .chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center; /* Center the chips horizontally */
-}
-
-.card-skills .chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0.22rem 0.55rem;
-  border-radius: 999px;
-  background: #eef1ff;
-  border: 1px solid #e3e8ff;
-  font-size: 0.9rem;
-  color: #16286b;
-  font-weight: 700;
-  transition: background 0.2s ease;
-}
-
-.card-skills .chip:hover {
-  background: #e6ecff;
-}
+    .subtitle{ position:relative; display:flex; align-items:center; gap:.35rem; }
+    .cursor{ width:2px; height:1.2em; background:var(--accent-ink); display:inline-block; translate:0 .1em; animation:blink .9s steps(1) infinite; }
+    @keyframes blink{ 50%{ opacity:0; } }
+    @media (prefers-reduced-motion: reduce){ .cursor{ display:none; animation:none; } }
   </style>
 </head>
 <body>
 
-  <!-- Masthead -->
-  <header class="masthead">
-    <div class="titleblock">
-      <h1>Nima Fakhrayi Mofrad</h1>
-      <div class="subtitle">Computational Materials Scientist (Ph.D. Candidate)</div>
-
-      <div class="contact">
-        Email: <a href="mailto:nima.fakhrayimofrad@aalto.fi">nima.fakhrayimofrad@aalto.fi</a>
-
-        <!-- Social Media Cards -->
-        <div style="display:flex; gap:12px; margin-top:8px; flex-wrap:wrap;">
-          <div class="bio-card" style="padding:10px;">
-            <a href="https://www.linkedin.com/in/nima-fakhrayimofrad" target="_blank">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png" alt="LinkedIn" class="social-logo">
-            </a>
-          </div>
-          <div class="bio-card" style="padding:10px;">
-            <a href="https://github.com/NFMofrad" target="_blank">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png" alt="GitHub" class="social-logo">
-            </a>
-          </div>
-          <div class="bio-card" style="padding:10px;">
-            <a href="https://scholar.google.com/citations?user=mB8VHhwAAAAJ&hl=en" target="_blank">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Scholar_logo.svg/1200px-Google_Scholar_logo.svg.png" alt="Google Scholar" class="social-logo">
-            </a>
-          </div>
-          <div class="bio-card" style="padding:10px;">
-            <a href="https://orcid.org/0009-0001-6702-6702" target="_blank">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/ORCID_iD.svg/1024px-ORCID_iD.svg.png" alt="ORCID" class="social-logo">
-            </a>
-          </div>
-        </div>
-      </div>
+<header class="masthead">
+  <div class="titleblock">
+    <h1>Nima Fakhrayi Mofrad</h1>
+    <div class="subtitle">
+      <span id="tw-text" aria-live="polite"></span>
+      <span class="cursor" aria-hidden="true"></span>
     </div>
 
-    <img class="avatar" src="profile.jpg" alt="Portrait of Nima Fakhrayi Mofrad" />
-  </header>
-
-  <div class="rule"></div>
-
-  <!-- Bio -->
-  <section class="bio-section">
-    <h2>About Me</h2>
-    <div class="bio-card">
-      <div class="marker"></div>
-      <p style="text-align: justify;">Hi! I’m Nima, a computational materials scientist who loves exploring materials at the atomic scale. I work with <strong>molecular dynamics</strong>, <strong>DFT</strong>, and <strong>machine learning</strong> to study plasma-surface interactions and material behavior. Python is my go-to for crunching data and building efficient, reproducible workflows.</p>
+    <div class="social hidden">
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/nima-fakhrayimofrad" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-.9 1.7-1.9 3.6-1.9 3.9 0 4.6 2.6 4.6 6v6H18V16c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4V21H9z"/></svg>
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/NFMofrad" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.11.8-.25.8-.56v-2.1c-3.26.71-3.95-1.4-3.95-1.4-.53-1.34-1.3-1.7-1.3-1.7-1.07-.74.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.05 1.79 2.76 1.27 3.43.97.11-.77.41-1.27.75-1.56-2.6-.29-5.33-1.3-5.33-5.8 0-1.28.46-2.33 1.22-3.15-.12-.3-.53-1.53.12-3.18 0 0 1-.32 3.28 1.2a11.4 11.4 0 0 1 5.98 0c2.28-1.52 3.28-1.2 3.28-1.2.65 1.65.24 2.88.12 3.18.76.82 1.22 1.87 1.22 3.15 0 4.51-2.74 5.51-5.36 5.8.42.36.8 1.06.8 2.14v3.17c0 .31.21.68.81.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+      </a>
+      <!-- Google Scholar -->
+      <a href="https://scholar.google.com/citations?user=mB8VHhwAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Scholar_logo.svg/512px-Google_Scholar_logo.svg.png" alt="Google Scholar" width="18" height="18" loading="lazy">
+      </a>
+      <!-- ORCID -->
+      <a href="https://orcid.org/0009-0001-6702-6702" target="_blank" rel="noopener" aria-label="ORCID">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/ORCID_iD.svg/512px-ORCID_iD.svg.png" alt="ORCID" width="18" height="18" loading="lazy">
+      </a>
     </div>
-  </section>
+
+    <div class="contact">
+      Email: <a href="mailto:nima.fakhrayimofrad@aalto.fi">nima.fakhrayimofrad@aalto.fi</a>
+    </div>
+  </div>
+
+  <img class="avatar" src="profile.jpg" alt="Portrait of Nima Fakhrayi Mofrad">
+</header>
+
+<div class="rule"></div>
+
+<!-- Bio Section -->
+<section class="bio-section">
+  <h2>About Me</h2>
+  <div class="bio-card">
+    <div class="marker"></div>
+    <p>Hi! I’m Nima, a computational materials scientist who loves exploring materials at the atomic scale. I work with <strong>molecular dynamics</strong>, <strong>DFT</strong>, and <strong>machine learning</strong> to study plasma-surface interactions and material behavior. Python is my go-to for crunching data and building efficient, reproducible workflows.</p>
+  </div>
+</section>
 
 <!-- Research Experience -->
 <section id="experience">
@@ -485,6 +317,43 @@
 
   </div>
 </section>
+
+  <!-- Typewriter script placed at end -->
+  <script>
+  (function(){
+    const phrase = "Computational Materials Scientist (Ph.D. Candidate)";
+    const el = document.getElementById("tw-text");
+    const cursor = document.querySelector(".cursor");
+    const socials = document.querySelector(".social");
+    if (!el || !cursor || !socials) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // If user prefers reduced motion: set text immediately and reveal socials.
+    if (reduced) {
+      el.textContent = phrase;
+      socials.classList.remove("hidden");
+      cursor.style.display = "none";
+      return;
+    }
+
+    let j = 0;
+    const speedType = 30; // typing speed in ms
+
+    function typeOnce(){
+      if (j < phrase.length){
+        el.textContent = phrase.slice(0, ++j);
+        setTimeout(typeOnce, speedType);
+      } else {
+        // Finished typing: reveal socials and hide cursor
+        socials.classList.remove("hidden");
+        cursor.style.display = "none";
+      }
+    }
+
+    typeOnce();
+  })();
+  </script>
 
 </body>
 </html>
