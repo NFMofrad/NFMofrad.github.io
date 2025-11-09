@@ -78,6 +78,7 @@
       background: var(--bg);
       transition: background .25s ease, color .25s ease;
     }
+	
     h1 { font-size:2rem; margin:0 0 .25rem 0; color:var(--card-ink); letter-spacing:0.2px; }
     h2 { font-size:1.1rem; margin:1.25rem 0 .35rem; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; }
     p, li { font-size:.97rem; }
@@ -85,50 +86,86 @@
     a:hover { color:var(--link-hover); text-decoration:underline; }
     .rule { height:3px; width:72px; background:var(--rule); margin:.5rem 0 1rem; border-radius:2px; }
 
-    /* =========================
-       HEADER / MASTHEAD
-       ========================= */
+   /* =========================
+     HEADER / MASTHEAD
+     ========================= */
     .masthead {
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap:20px;
-      align-items:start;
-      margin-bottom:8px;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch; /* make avatar stretch to match info height */
+      gap: 24px;
+      margin-bottom: 16px;
     }
+    
+    .avatar {
+      width: auto;            /* width will scale based on height */
+      height: 100%;           /* match height of info column */
+      max-height: 180px;      /* optional cap */
+      object-fit: cover;
+      border-radius: 6px;     /* subtle rounding */
+      border: 3px solid var(--border);
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      flex-shrink: 0;
+    }
+    
+    .titleblock {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      flex: 1;
+    }
+    
+    .titleblock h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+    
     .titleblock .subtitle {
+      font-size: 1.1rem;
       color: var(--muted);
-      font-weight: 600;
-      margin: 0 0 .25rem 0;
-      display:flex; align-items:center; gap:.35rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
-    .contact { margin:.35rem 0 0; color:var(--ink); font-size:.95rem; }
-    .contact a { color:var(--link); }
-    .avatar{
-      width:162px; height:162px; object-fit:cover; /* keep as cover; change to 'contain' to zoom out */
-      border-radius:50%;
-      border:3px solid var(--border);
-      box-shadow:0 6px 18px rgba(0,0,0,.12);
-      justify-self:end; align-self:start;
-      background:#fff;
+    
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--ink);
     }
-
-    /* Theme toggle */
-    .theme-toggle{
-      display:inline-flex; align-items:center; gap:.5rem;
-      position:relative; margin:.25rem 0 0;
+    
+    .contact a {
+      color: var(--link);
+      text-decoration: none;
     }
-    .theme-btn{
-      border:1px solid var(--border);
-      background:var(--card-bg);
-      color:var(--ink);
-      border-radius:999px;
-      padding:.35rem .7rem;
-      font-weight:700; font-size:.9rem;
-      cursor:pointer;
-      box-shadow: var(--shadow);
-      transition: transform .15s ease, box-shadow .15s ease, background-color .2s ease;
+    
+    .contact a:hover {
+      text-decoration: underline;
     }
-    .theme-btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+    
+    /* Mobile: stack vertically */
+    @media (max-width: 560px) {
+      .masthead {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .avatar {
+        height: 120px;
+        width: 120px;
+      }
+      .titleblock {
+        align-items: center;
+        text-align: center;
+      }
+      .contact {
+        justify-content: center;
+      }
+    }
 
     /* =========================
        CARDS / GRIDS
@@ -323,6 +360,7 @@
 </head>
 <body>
 <header class="masthead">
+<img class="avatar" src="profile.jpg" alt="Portrait of Nima Fakhrayi Mofrad" loading="eager" decoding="async">
   <div class="titleblock">
     <h1>Nima Fakhrayi Mofrad</h1>
     <div class="subtitle">
@@ -353,8 +391,6 @@
       Email: <a href="mailto:nima.fakhrayimofrad@aalto.fi">nima.fakhrayimofrad@aalto.fi</a>
     </div>
   </div>
-
-  <img class="avatar" src="profile.jpg" alt="Portrait of Nima Fakhrayi Mofrad" loading="eager" decoding="async">
 </header>
 
 <div class="rule"></div>
@@ -585,7 +621,7 @@ const ACTIVITIES = [
   });
 })();
 
-/* ===== Collaboration map ===== */
+/* ===== Collaboration map (improved positioning) ===== */
 (function initMap(){
   const SITES = [
     { title:"Home — UEF, Joensuu", desc:"Lead: Dr. Arsalan Hashemi. Physics-informed chemistry and machine-learning workflows for energy and materials.", lat:62.6, lon:29.8, cls:"c-fi", active:true, home:true },
@@ -595,49 +631,93 @@ const ACTIVITIES = [
     { title:"USA — Cambridge, MA", desc:"Collaborator: Dr. Alex Miller. Electrochemical CO₂ reduction: solvent effects, ion pairing, and reactive transport modeling.", lat:42.3736, lon:-71.1097, cls:"c-us", active:false },
     { title:"China — Shanghai", desc:"Collaborator: Dr. Li Chen. Battery electrolytes: data curation, surrogate models, and uncertainty quantification.", lat:31.2304, lon:121.4737, cls:"c-cn", active:false }
   ];
-  const MODELS = [];
-  const clamp = (v,min,max)=>Math.max(min,Math.min(max,v));
-  function truncateWords(str, max){ const w=(str||"").trim().split(/\s+/); return w.length<=max?str:w.slice(0,max).join(" ")+"…"; }
+
+  // If your map image is centered at a different meridian (e.g. 180), set this to that value (degrees).
+  // For standard maps use 0.
+  const centralMeridian = 0; // change to 180 if your map's center is 180°E
 
   const mount = qs("#pins");
-  function layoutCards(){
-    const container = mount.closest('.collab-static');
-    const cw = container.clientWidth, ch = container.clientHeight;
-    const pad=8, gap=12;
-    MODELS.forEach(({pin, card, xPct, yPct})=>{
-      const cx = cw * (xPct/100), cy = ch * (yPct/100);
-      const w = Math.min(card.offsetWidth || 150, cw - 2*pad);
-      const h = Math.min(card.offsetHeight || 90, ch - 2*pad);
-      let left = cx + gap, rightSide = true;
-      if(left + w + pad > cw){ left = cx - gap - w; rightSide = false; }
-      left = clamp(left, pad, cw - w - pad);
-      let top = cy - h/2; top = clamp(top, pad, ch - h - pad);
-      card.style.left = left + 'px'; card.style.top = top + 'px';
-      card.classList.toggle('place-right', rightSide);
-      card.classList.toggle('place-left', !rightSide);
-    });
+  const container = mount.closest('.collab-static');
+  const img = qs('.collab-static img.map');
+
+  // helper: convert lon->x pixel and lat->y pixel on an equirectangular image
+  function lonLatToImagePixels(lon, lat, imgWidth, imgHeight) {
+    // Shift longitude by central meridian
+    let shiftedLon = lon - centralMeridian;
+    while (shiftedLon < -180) shiftedLon += 360;
+    while (shiftedLon > 180) shiftedLon -= 360;
+  
+    // Mercator projection math
+    const x = ((shiftedLon + 180) / 360) * imgWidth;
+  
+    // Clamp latitude to avoid infinity at poles
+    const latRad = lat * Math.PI / 180;
+    const mercN = Math.log(Math.tan(Math.PI / 4 + latRad / 2));
+    const y = (imgHeight / 2) - (imgWidth * mercN / (2 * Math.PI));
+  
+    return { x, y };
   }
 
-  function placePins(){
-    mount.innerHTML = ""; MODELS.length = 0;
+  function truncateWords(str, max){ const w=(str||"").trim().split(/\s+/); return w.length<=max?str:w.slice(0,max).join(" ")+"…"; }
+
+  function layoutPins(){
+    mount.innerHTML = "";
+
+    // Make sure image has rendered size; if not, wait until it loads
+    const imgWidth  = img.clientWidth  || img.naturalWidth;
+    const imgHeight = img.clientHeight || img.naturalHeight;
+
+    // image offset inside container (left/top) — important when image does not fill container completely
+    const imgRect = img.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const imgOffsetLeft = imgRect.left - containerRect.left;
+    const imgOffsetTop  = imgRect.top  - containerRect.top;
+
     SITES.forEach(s=>{
-      const xPct = ((s.lon + 180) / 360) * 100;
-      const yPct = ((90  -  s.lat) / 180) * 100;
+      const { x: px, y: py } = lonLatToImagePixels(s.lon, s.lat, imgWidth, imgHeight);
+
+      // Create pin
       const pin = document.createElement("div");
       pin.className = `pin ${s.cls||""} ${s.active===false?"inactive":""} ${s.home?"home":""}`;
-      pin.style.left = xPct + "%"; pin.style.top = yPct + "%";
-      pin.setAttribute("tabindex","0"); pin.setAttribute("aria-label", s.title || s.desc || "collaborator");
+      // Position pin using image pixel + image offset -> convert to container px
+      const leftPx = imgOffsetLeft + px;
+      const topPx  = imgOffsetTop  + py;
+      pin.style.left = leftPx + "px";
+      pin.style.top  = topPx  + "px";
+      pin.setAttribute("tabindex","0");
+      pin.setAttribute("aria-label", s.title || s.desc || "collaborator");
+
       const stem=document.createElement("div"); stem.className="stem";
       const ring=document.createElement("div"); ring.className="ring";
       const dot=document.createElement("div"); dot.className="dot";
-      pin.append(stem, ring, dot); if(s.home){ const ring2=document.createElement("div"); ring2.className="ring2"; pin.append(ring2); }
+      pin.append(stem, ring, dot);
+      if(s.home){ const ring2=document.createElement("div"); ring2.className="ring2"; pin.append(ring2); }
       mount.appendChild(pin);
 
+      // Create card
       const card=document.createElement("div"); card.className=`collab-card ${s.active===false?"inactive":""}`;
       const caret=document.createElement("div"); caret.className="collab-caret";
       const title=document.createElement("div"); title.className="card-title"; title.textContent = s.title || "";
       const body=document.createElement("div"); body.className="card-body"; body.textContent = truncateWords(s.desc || "", 30);
-      card.append(title, body, caret); mount.appendChild(card);
+      card.append(title, body, caret);
+      mount.appendChild(card);
+
+      // Place card near the pin: prefer to the right, but flip when near edge
+      function placeCard(){
+        const pad = 8;
+        const gap = 12;
+        const cw = container.clientWidth, ch = container.clientHeight;
+        const cx = leftPx, cy = topPx;
+        const w = Math.min(card.offsetWidth || 150, cw - 2*pad);
+        const h = Math.min(card.offsetHeight || 90, ch - 2*pad);
+        let left = cx + gap, rightSide = true;
+        if(left + w + pad > cw){ left = cx - gap - w; rightSide = false; }
+        left = Math.max(pad, Math.min(left, cw - w - pad));
+        let top = cy - h/2; top = Math.max(pad, Math.min(top, ch - h - pad));
+        card.style.left = left + 'px'; card.style.top = top + 'px';
+        card.classList.toggle('place-right', rightSide);
+        card.classList.toggle('place-left', !rightSide);
+      }
 
       const open=()=>card.classList.add('open'), close=()=>card.classList.remove('open');
       pin.addEventListener('mouseenter', open); pin.addEventListener('mouseleave', close);
@@ -648,15 +728,25 @@ const ACTIVITIES = [
         if(e.key==='Escape'){ close(); }
       });
 
-      MODELS.push({pin, card, xPct, yPct});
+      // Position the card now and when window resizes
+      placeCard();
+      window.addEventListener('resize', placeCard);
     });
-
-    const img = qs('.collab-static img.map');
-    if(img && !img.complete){ img.addEventListener('load', layoutCards, {once:true}); } else { layoutCards(); }
   }
 
-  placePins();
-  window.addEventListener('resize', layoutCards);
+  // If image hasn't loaded yet, wait for it
+  if(!img.complete || img.naturalWidth === 0){
+    img.addEventListener('load', layoutPins, { once: true });
+    // also try after a slight delay in case of responsive layout adjustments
+    setTimeout(() => { if(img.complete) layoutPins(); }, 250);
+  } else {
+    layoutPins();
+  }
+
+  // If layout changes (e.g. fonts load, container resized), relayout pins
+  const ro = new ResizeObserver(()=>{ if(img.complete) layoutPins(); });
+  ro.observe(container);
+  ro.observe(img);
 })();
 </script>
 </body>
