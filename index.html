@@ -358,6 +358,13 @@
     
     /* Some cards use `subprojects` / `.subproject` etc — ensure chips don't inherit left margin */
     .research-card > * { box-sizing: border-box; }
+	
+	.research-card p {
+  margin-left: 0;
+}
+.research-card h3 {
+  margin-left: 0;
+}
   </style>
 </head>
 <body>
@@ -411,8 +418,7 @@
   <div class="research-grid">
 
     <div class="research-card">
-      <div class="marker"></div>
-      <h3>Mechanical Properties of Polyolefin Chains</h3>
+      <h3 style="text-align: center;">Mechanical Properties of Polyolefin Chains</h3>
       <video autoplay loop muted playsinline style="width:100%;height:auto;border-radius:8px;">
         <source src="PS.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -430,10 +436,9 @@
     </div>
 
     <div class="research-card">
-      <div class="marker"></div>
-      <h3>Plasma-wall Interactions in Fusion Reactors</h3>
-      <img src="rovib_temp_Be.png" alt="Rovibrational analysis of Be–D system" style="width:100%;height:auto;border-radius:8px;" loading="lazy" decoding="async">
-      <p style="text-align: justify;">Atomic-scale modeling of plasma-surface interactions, including molecular sputtering of Be–D and W–D systems.</p>
+      <h3 style="text-align: center;">Plasma-wall Interactions in Fusion Reactors</h3>
+      <img src="rovib_temp_Be.png" alt="Rovibrational analysis of Be–D system" style="width:100%;height:auto;border-radius:8px;height:52%;" loading="lazy" decoding="async">
+      <p style="text-align: justify;">Atomic-scale modeling of plasma-surface interactions, including molecular sputtering of Be–D and W–D systems in fusion environments.</p>
       <div class="subprojects">
         <a class="subproject" href="https://github.com/NFMofrad/Sputtering" target="_blank" rel="noopener">
           <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .2a7.8 7.8 0 1 0 0 15.6A7.8 7.8 0 0 0 8 .2z"/></svg>
@@ -446,8 +451,7 @@
     </div>
 
     <div class="research-card">
-      <div class="marker"></div>
-      <h3>High-Performance Computing & Data Analysis</h3>
+      <h3 style="text-align: center;">High-Performance Computing & Data Analysis</h3>
       <p style="text-align: justify;">Development of scalable workflows and analysis pipelines for large-scale molecular dynamics simulations.</p>
       <div class="subprojects">
         <a class="subproject" href="https://github.com/NFMofrad/Sputtering" target="_blank" rel="noopener">
@@ -461,8 +465,7 @@
     </div>
 
     <div class="research-card">
-      <div class="marker"></div>
-      <h3>Machine Learning for Materials Research</h3>
+      <h3 style="text-align: center;">Machine Learning for Materials Research</h3>
       <p style="text-align: justify;">Application of ML models to predict properties and behavior of materials at the atomic and molecular scale.</p>
       <div class="subprojects">
         <a class="subproject" href="https://github.com/NFMofrad/Sputtering" target="_blank" rel="noopener">
