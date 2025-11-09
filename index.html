@@ -99,8 +99,10 @@
     
     .avatar {
       width: auto;            /* width will scale based on height */
-      height: 100%;           /* match height of info column */
-      max-height: 180px;      /* optional cap */
+      height: 100%;          /* match info column height */
+      width: 100%;           /* make width equal to height */
+      max-height: 180px;     /* optional cap */
+      max-width: 180px;      /* optional cap to prevent oversizing */
       object-fit: cover;
       border-radius: 6px;     /* subtle rounding */
       border: 3px solid var(--border);
