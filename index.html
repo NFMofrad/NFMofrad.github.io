@@ -745,17 +745,6 @@ const ACTIVITIES = [
   buildPins();
   layoutCards();
 })();
-
-    function alignMapHeight() {
-  const list = document.querySelector('.collab-list');
-  const map = document.querySelector('.collab-static');
-  if (list && map) {
-    map.style.height = list.offsetHeight + 'px';
-  }
-}
-
-window.addEventListener('load', alignMapHeight);
-window.addEventListener('resize', alignMapHeight);
 </script>
 </body>
 </html>
