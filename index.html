@@ -37,6 +37,13 @@
 
       /* Collab pins */
       --c-de:#0ea5e9; --c-us:#22c55e; --c-cn:#f59e0b; --c-uk:#ef4444; --c-fi:#1A318B;
+	  
+	  /* map pin colors */
+      --c-de:#0ea5e9; /* Germany */
+      --c-uk:#ef4444; /* UK */
+      --c-fi:#0b6a0b; /* Finland */
+      --c-es:#f97316; /* Spain */
+      --c-hu:#22c55e; /* Hungary */
     }
 
     /* =========================
@@ -288,83 +295,108 @@
       .act-link { grid-area: link; justify-self:start; }
     }
 
-    /* =========================
-       COLLAB MAP
-       ========================= */
+    /* --- Ongoing collaborations layout: LEFT list + RIGHT map --- */
+    .networks-grid{
+      display:grid; grid-template-columns: minmax(180px, 260px) 1fr; gap:16px; align-items:start;
+    }
+    @media (max-width: 720px){
+      .networks-grid{ grid-template-columns: 1fr; }
+    }
+    .collab-list{
+      list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;
+    }
+    .collab-list li{
+      display:flex; align-items:center; gap:6px;padding:4px 8px;font-size:0.88rem;border-radius:10px;
+      background:var(--card-bg);border:1px solid #e0e5ff;box-shadow:var(--shadow);cursor:pointer;user-select:none;
+    }
+    html[data-theme="dark"] .collab-list li{ border-color:#354157; }
+    .collab-list li:hover{ box-shadow:var(--shadow-lg); transform:translateY(-1px); }
+    .cdot{ width:10px; height:10px; border-radius:50%; flex:0 0 auto; box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.15); }
+    .cdot{ width:8px; height:8px; }
+    .collab-list{ gap:6px; }
+    .cdot.c-de{ background:var(--c-de); } .cdot.c-uk{ background:var(--c-uk);} .cdot.c-fi{ background:var(--c-fi);} .cdot.c-es{ background:var(--c-es);} .cdot.c-hu{ background:var(--c-hu);}
+
+    /* --- Static map + pins --- */
     .collab-static{
-      position:relative; border:1px solid var(--border); border-radius:12px; overflow:hidden;
-      box-shadow:0 2px 6px rgba(0,0,0,.12); background:var(--bg);
+      position:relative; border:1px solid color-mix(in sRGB, var(--accent) 15%, transparent); border-radius:12px; overflow:hidden;
+      box-shadow:var(--shadow); background:var(--page);
       width:100%; margin:.6rem auto;
     }
-    .collab-static img.map{ width:100%; height:auto; display:block; background:linear-gradient(180deg,#f4f7fb,transparent); }
-    [data-theme="dark"] .collab-static img.map{ background:linear-gradient(180deg,#0e1116,transparent); filter:contrast(1.05) brightness(.95); }
+    .collab-static img.map{ width:100%; height:auto; display:block; background:linear-gradient(180deg,color-mix(in sRGB, var(--accent) 6%, transparent),transparent); }
     .collab-static #pins{ position:absolute; inset:0; pointer-events:auto; z-index:2; }
 
-    .pin{ position:absolute; transform:translate(-50%,-100%); pointer-events:auto; cursor:default; outline:none;
+    .pin{ position:absolute; transform:translate(-50%,-100%); pointer-events:auto; cursor:default; outline:none; color:var(--c-fi);
       --stem-h: 14px; --dot-size: 10px; --ring-size: 22px; --ring2-size: 0px; z-index:1; transition:filter .15s ease, opacity .15s ease; }
     .pin:hover{ z-index:6; }
-    .pin .stem{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:0; height:var(--stem-h); border-left:2px solid currentColor; filter:drop-shadow(0 0 1px rgba(0,0,0,.2)); }
-    .pin .dot{ position:absolute; left:50%; bottom: calc(var(--stem-h) - (var(--dot-size) / 2)); transform: translateX(-50%); width:var(--dot-size); height:var(--dot-size); border-radius:50%;
-      background: currentColor; box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.15); transition:transform .12s ease; z-index:2; }
-    .pin:hover .dot, .pin:focus-visible .dot{ transform: translateX(-50%) scale(1.15); }
-    .pin .ring{ position:absolute; left:50%; bottom: calc(var(--stem-h) - (var(--ring-size) / 2)); transform: translateX(-50%); width:var(--ring-size); height:var(--ring-size);
-      border-radius:50%; border:2px solid currentColor; opacity:.85; animation:ping 1.6s ease-out infinite; z-index:1; }
-    .pin .ring2{ position:absolute; left:50%; bottom: calc(var(--stem-h) - (var(--ring2-size) / 2)); transform: translateX(-50%); width:var(--ring2-size); height:var(--ring2-size);
-      border-radius:50%; border:2px solid currentColor; opacity:.7; animation:pingStrong 1.6s .25s ease-out infinite; z-index:1; }
-    .pin.home{ --stem-h: 16px; --dot-size: 12px; --ring-size: 28px; --ring2-size: 38px; }
-    .pin.home .dot{ box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.2), 0 0 8px rgba(0,100,0,.35); }
-    @keyframes ping{ 0%{ transform:translateX(-50%) scale(.2); opacity:.85; } 70%{ transform:translateX(-50%) scale(1.5); opacity:0; } 100%{ transform:translateX(-50%) scale(1.6); opacity:0; } }
-    @keyframes pingStrong{ 0%{ transform:translateX(-50%) scale(.22); opacity:.95; } 65%{ transform:translateX(-50%) scale(1.8); opacity:0; } 100%{ transform:translateX(-50%) scale(1.9); opacity:0; } }
 
+    .pin .stem{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:0; height:var(--stem-h); border-left:2px solid currentColor; filter:drop-shadow(0 0 1px rgba(0,0,0,.2)); }
+    .pin .dot{ position:absolute; left:50%; bottom: calc(var(--stem-h) - (var(--dot-size) / 2)); transform: translateX(-50%); width:var(--dot-size); height:var(--dot-size); border-radius:50%; background: currentColor; box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.15); transition:transform .12s ease; z-index:2; }
+    .pin:hover .dot, .pin:focus-visible .dot{ transform: translateX(-50%) scale(1.15);} 
+    .pin .ring{ position:absolute; left:50%; bottom: calc(var(--stem-h) - (var(--ring-size) / 2)); transform: translateX(-50%); width:var(--ring-size); height:var(--ring-size); border-radius:50%; border:2px solid currentColor; opacity:.85; animation:ping 1.6s ease-out infinite; z-index:1; }
+    .pin .ring2{ position:absolute; left:50%; bottom: calc(var(--stem-h) - (var(--ring2-size) / 2)); transform: translateX(-50%); width:var(--ring2-size); height:var(--ring2-size); border-radius:50%; border:2px solid currentColor; opacity:.7; animation:pingStrong 1.6s .25s ease-out infinite; z-index:1; }
+
+    .pin.home{ --stem-h: 16px; --dot-size: 12px; --ring-size: 28px; --ring2-size: 38px; color:var(--c-fi); }
+    .pin.c-de{ color:var(--c-de); } .pin.c-uk{ color:var(--c-uk);} .pin.c-fi{ color:var(--c-fi);} .pin.c-es{ color:var(--c-es);} .pin.c-hu{ color:var(--c-hu);} 
+    .pin.home .dot{ box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.2), 0 0 8px rgba(0,100,0,.35); }
+    .pin:hover .ring{ animation-duration:1.05s; }
+
+    @keyframes ping{ 0% { transform:translateX(-50%) scale(.2); opacity:.85; } 70%{ transform:translateX(-50%) scale(1.5); opacity:0; } 100%{ transform:translateX(-50%) scale(1.6); opacity:0; } }
+    @keyframes pingStrong{ 0% { transform:translateX(-50%) scale(.22); opacity:.95; } 65%{ transform:translateX(-50%) scale(1.8); opacity:0; } 100%{ transform:translateX(-50%) scale(1.9); opacity:0; } }
+	
+	
+    /* ==== COLLAB CARDS ==== */
     .collab-card{
-      position:absolute; width:3.9cm; max-width: min(3.9cm, calc(100% - 24px)); background:var(--bg);
-      border:1px solid var(--border); border-radius:10px; box-shadow:0 6px 22px rgba(0,0,0,.14);
-      padding:.55rem .65rem .65rem; opacity:0; visibility:hidden; transition:opacity .18s ease, visibility .18s ease; z-index:10; pointer-events:auto;
-    }
+      position:absolute; width:3.9cm; max-width: min(3.9cm, calc(100% - 24px)); background:var(--page); border:1px solid #e6e6e6; border-radius:10px; box-shadow:0 6px 22px rgba(0,0,0,.14); padding:.55rem .65rem .65rem; opacity:0; visibility:hidden; transition:opacity .18s ease, visibility .18s ease; z-index:10; pointer-events:auto; }
+    html[data-theme="dark"] .collab-card{ border-color:#263244; box-shadow:0 10px 28px rgba(0,0,0,.6); }
     .collab-card.open{ opacity:1; visibility:visible; }
-    .collab-card .card-title{ font-weight:700; font-size:.9rem; margin:0 0 .2rem; color:var(--card-ink); }
-    .collab-card .card-body{ font-size:.85rem; color:var(--ink); line-height:1.35; word-wrap:break-word; }
+    .collab-card .card-title{ font-weight:400; font-size:.81rem; margin:0 0 .2rem; color:var(--accent-ink); }
+    .collab-card .card-body{ font-size:.78rem; color:var(--ink); line-height:1.35; word-wrap:break-word; }
     .collab-caret{ position:absolute; top:50%; transform:translateY(-50%); width:0; height:0; filter:drop-shadow(0 1px 0 rgba(0,0,0,.08)); }
-    .collab-card.place-right .collab-caret{ left:-8px; border:8px solid transparent; border-right-color:var(--bg); }
-    .collab-card.place-left .collab-caret{ right:-8px; border:8px solid transparent; border-left-color:var(--bg); }
+    .collab-card.place-right .collab-caret{ left:-8px; border:8px solid transparent; border-right-color:var(--page); }
+    .collab-card.place-left  .collab-caret{ right:-8px; border:8px solid transparent; border-left-color:var(--page); }
     .pin.inactive{ opacity:.55; filter:grayscale(.2); }
     .pin.inactive:hover{ opacity:1; filter:none; z-index:6; }
     .collab-card.inactive{ border-style:dashed; }
-    .c-de{ color:var(--c-de) } .c-us{ color:var(--c-us) } .c-cn{ color:var(--c-cn) } .c-uk{ color:var(--c-uk) } .c-fi{ color:var(--c-fi) }
-	
-    .research-card .chips {
-      display: flex !important;        /* make it a flex container */
-      justify-content: center !important; /* center horizontally */
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      width: 100%;
-      margin-left: 0;                  /* remove any inherited left offset */
-      padding: 0.5rem 0 0;             /* small top spacing from card content */
-      box-sizing: border-box;
-      text-align: center;
+
+    @media (prefers-reduced-motion: reduce){ .ring, .ring2{ animation:none !important; } }
+
+    @media print{
+      @page{ size:A4; margin:18mm 22mm; }
+      body{ max-width:none; margin:0; padding:0; }
+      a{ text-decoration:none; color:inherit; }
+      .bio{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      h2{ margin-top:10pt; }
+      .masthead{ grid-template-columns:1fr auto; gap:14pt; }
+      .avatar{ width:124px; height:124px; }
+      .rule{ margin:.3rem 0 .7rem; }
+      .theme-toggle, .networks-grid{ display:none !important; }
     }
-    
-    /* keep chip appearance but ensure centering works */
-    .research-card .chip {
-      display: inline-flex;            /* keep them inline-like but flex for alignment */
-      justify-content: center;
-      align-items: center;
-      padding: .22rem .55rem;
-      border-radius: 999px;
-      font-weight:700;
-      white-space: nowrap;             /* prevent awkward wrapping of single chip text */
-    }
-    
-    /* Some cards use `subprojects` / `.subproject` etc — ensure chips don't inherit left margin */
-    .research-card > * { box-sizing: border-box; }
 	
 	.research-card p {
-  margin-left: 0;
-}
-.research-card h3 {
-  margin-left: 0;
-}
+      margin-left: 0;
+    }
+	
+    .research-card h3 {
+      margin-left: 0;
+    }
+	
+	.networks-grid {
+      display: grid;
+      grid-template-columns: minmax(180px, 260px) 1fr;
+      gap: 16px;
+      align-items: stretch; /* make both items stretch to the tallest */
+    }
+
+    .collab-list, .collab-static {
+      margin: 0;       /* remove extra margins */
+      padding: 0;      /* remove extra padding if any */
+      height: 100%;    /* make both stretch fully */
+    }
+    
+    /* For the map itself inside .collab-static */
+    .collab-static > .map-container {
+      height: 100%;    /* fill parent height */
+    }
   </style>
 </head>
 <body>
@@ -437,7 +469,7 @@
 
     <div class="research-card">
       <h3 style="text-align: center;">Plasma-wall Interactions in Fusion Reactors</h3>
-      <img src="rovib_temp_Be.png" alt="Rovibrational analysis of Be–D system" style="width:100%;height:auto;border-radius:8px;" loading="lazy" decoding="async">
+      <img src="rovib_temp_Be.png" alt="Rovibrational analysis of Be–D system" style="width:100%;height:auto;border-radius:8px;height:52%;" loading="lazy" decoding="async">
       <p style="text-align: justify;">Atomic-scale modeling of plasma-surface interactions, including molecular sputtering of Be–D and W–D systems in fusion environments.</p>
       <div class="subprojects">
         <a class="subproject" href="https://github.com/NFMofrad/Sputtering" target="_blank" rel="noopener">
@@ -496,11 +528,28 @@
   </div>
 </section>
 
+<!-- Networks -->
 <h2>Networks</h2>
-<section class="collab-static" aria-label="Static map with collaboration pins">
-  <img class="map" src="worldmap.jpg" alt="World map (equirectangular)" loading="lazy" decoding="async" />
-  <div id="pins" aria-hidden="false"></div>
-</section>
+<div class="networks-grid" id="networksGrid" aria-label="Collaborator map and list">
+
+  <!-- LEFT: Collaborator list -->
+  <ul class="collab-list" id="collabList" aria-label="Collaborators (click to highlight)">
+    <li>
+      <span class="cdot c-fi"></span>
+      <span>Me — Aalto University, Finland</span>
+    </li>
+    <li>
+      <span class="cdot c-de"></span>
+      <span>Prof. Guido Raos — PoliMi, Italy</span>
+    </li>
+  </ul>
+
+  <!-- RIGHT: Static world map with pins -->
+  <section class="collab-static" aria-label="Static map with collaboration pins">
+    <img class="map" src="worldmap.jpg" alt="World map (equirectangular)" loading="lazy" decoding="async" />
+    <div id="pins"></div>
+  </section>
+</div>
 
 <script>
 /* ===== Utilities ===== */
@@ -560,14 +609,6 @@ const qsa = (s, r=document) => Array.from(r.querySelectorAll(s));
 
 /* ===== Activities (Data-driven) ===== */
 const ACTIVITIES = [
-  {
-    type:"Paper",
-    dateISO:"2024-04-20",
-    title:"Mechanical Properties of Polyolefin Chains",
-    href:"https://doi.org/10.1021/acs.macromol.3c02609",
-    linkText:"Read"
-  },
-
   {
     type:"Paper",
     dateISO:"2025-09-10",
@@ -635,133 +676,86 @@ const ACTIVITIES = [
   });
 })();
 
-/* ===== Collaboration map (improved positioning) ===== */
-(function initMap(){
+/* ===== Map data (your collaborators) ===== */
+(function(){
+  'use strict';
+
   const SITES = [
-    { title:"Home — UEF, Joensuu", desc:"Lead: Dr. Arsalan Hashemi. Physics-informed chemistry and machine-learning workflows for energy and materials.", lat:62.6, lon:29.8, cls:"c-fi", active:true, home:true },
-    { title:"Germany — Berlin", desc:"Collaborator: Dr. Hossein Vahid. Electrolyte modeling for developing water purification and desalination.", lat:52.5200, lon:13.4050, cls:"c-de", active:true },
-    { title:"USA — Washington, DC", desc:"Collaborator: Prof. Jane Doe. Defects in 2D semiconductors; multiscale simulations bridging DFT and ML potentials.", lat:38.9072, lon:-77.0369, cls:"c-us", active:true },
-    { title:"UK — London", desc:"Collaborator: Dr. Sara Khan. Raman and photoluminescence workflows for layered materials under strain.", lat:51.5074, lon:-0.1278, cls:"c-uk", active:true },
-    { title:"USA — Cambridge, MA", desc:"Collaborator: Dr. Alex Miller. Electrochemical CO₂ reduction: solvent effects, ion pairing, and reactive transport modeling.", lat:42.3736, lon:-71.1097, cls:"c-us", active:false },
-    { title:"China — Shanghai", desc:"Collaborator: Dr. Li Chen. Battery electrolytes: data curation, surrogate models, and uncertainty quantification.", lat:31.2304, lon:121.4737, cls:"c-cn", active:false }
+    { person: 'Me', title: 'Aalto University, Finland', lat: 62.60, lon: 29.80, cls: 'c-fi', home: true },
+    { person: 'Prof. Guido Raos', title: 'PoliMi, Italy', lat: 51.05, lon: 13.74, cls: 'c-de' },
   ];
 
-  // If your map image is centered at a different meridian (e.g. 180), set this to that value (degrees).
-  // For standard maps use 0.
-  const centralMeridian = 0; // change to 180 if your map's center is 180°E
+  const MODELS = [];
 
-  const mount = qs("#pins");
-  const container = mount.closest('.collab-static');
-  const img = qs('.collab-static img.map');
-
-  // helper: convert lon->x pixel and lat->y pixel on an equirectangular image
-  function lonLatToImagePixels(lon, lat, imgWidth, imgHeight) {
-    // Shift longitude by central meridian
-    let shiftedLon = lon - centralMeridian;
-    while (shiftedLon < -180) shiftedLon += 360;
-    while (shiftedLon > 180) shiftedLon -= 360;
-  
-    // Mercator projection math
-    const x = ((shiftedLon + 180) / 360) * imgWidth;
-  
-    // Clamp latitude to avoid infinity at poles
-    const latRad = lat * Math.PI / 180;
-    const mercN = Math.log(Math.tan(Math.PI / 4 + latRad / 2));
-    const y = (imgHeight / 2) - (imgWidth * mercN / (2 * Math.PI));
-  
-    return { x, y };
+  function equirectToPct(lon, lat) {
+    return { xPct: ((lon + 180) / 360) * 100, yPct: ((90 - lat) / 180) * 100 };
   }
 
-  function truncateWords(str, max){ const w=(str||"").trim().split(/\s+/); return w.length<=max?str:w.slice(0,max).join(" ")+"…"; }
+  function buildPins(){
+    const mount = document.getElementById('pins');
+    mount.innerHTML = '';
+    SITES.forEach(s => {
+      const { xPct, yPct } = equirectToPct(s.lon, s.lat);
+      const pin = document.createElement('div');
+      pin.className = `pin ${s.cls || ''} ${s.home ? 'home' : ''}`;
+      pin.style.left = xPct + '%';
+      pin.style.top = yPct + '%';
+      pin.tabIndex = 0;
+      pin.setAttribute('aria-label', `${s.person} — ${s.title}`);
 
-  function layoutPins(){
-    mount.innerHTML = "";
-
-    // Make sure image has rendered size; if not, wait until it loads
-    const imgWidth  = img.clientWidth  || img.naturalWidth;
-    const imgHeight = img.clientHeight || img.naturalHeight;
-
-    // image offset inside container (left/top) — important when image does not fill container completely
-    const imgRect = img.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-    const imgOffsetLeft = imgRect.left - containerRect.left;
-    const imgOffsetTop  = imgRect.top  - containerRect.top;
-
-    SITES.forEach(s=>{
-      const { x: px, y: py } = lonLatToImagePixels(s.lon, s.lat, imgWidth, imgHeight);
-
-      // Create pin
-      const pin = document.createElement("div");
-      pin.className = `pin ${s.cls||""} ${s.active===false?"inactive":""} ${s.home?"home":""}`;
-      // Position pin using image pixel + image offset -> convert to container px
-      const leftPx = imgOffsetLeft + px;
-      const topPx  = imgOffsetTop  + py;
-      pin.style.left = leftPx + "px";
-      pin.style.top  = topPx  + "px";
-      pin.setAttribute("tabindex","0");
-      pin.setAttribute("aria-label", s.title || s.desc || "collaborator");
-
-      const stem=document.createElement("div"); stem.className="stem";
-      const ring=document.createElement("div"); ring.className="ring";
-      const dot=document.createElement("div"); dot.className="dot";
+      const stem = document.createElement('div'); stem.className = 'stem';
+      const ring = document.createElement('div'); ring.className = 'ring';
+      const dot  = document.createElement('div'); dot.className  = 'dot';
       pin.append(stem, ring, dot);
-      if(s.home){ const ring2=document.createElement("div"); ring2.className="ring2"; pin.append(ring2); }
+      if(s.home){ const ring2 = document.createElement('div'); ring2.className='ring2'; pin.append(ring2); }
+
       mount.appendChild(pin);
 
-      // Create card
-      const card=document.createElement("div"); card.className=`collab-card ${s.active===false?"inactive":""}`;
-      const caret=document.createElement("div"); caret.className="collab-caret";
-      const title=document.createElement("div"); title.className="card-title"; title.textContent = s.title || "";
-      const body=document.createElement("div"); body.className="card-body"; body.textContent = truncateWords(s.desc || "", 30);
-      card.append(title, body, caret);
+      // Add a hidden card for each pin
+      const card = document.createElement('div');
+      card.className = 'collab-card';
+      const caret = document.createElement('div'); caret.className = 'collab-caret';
+      const title = document.createElement('div'); title.className = 'card-title'; title.textContent = `${s.person} — ${s.title}`;
+      const body = document.createElement('div'); body.className = 'card-body'; body.textContent = s.desc || '';
+      card.append(caret, title, body);
       mount.appendChild(card);
-
-      // Place card near the pin: prefer to the right, but flip when near edge
-      function placeCard(){
-        const pad = 8;
-        const gap = 12;
-        const cw = container.clientWidth, ch = container.clientHeight;
-        const cx = leftPx, cy = topPx;
-        const w = Math.min(card.offsetWidth || 150, cw - 2*pad);
-        const h = Math.min(card.offsetHeight || 90, ch - 2*pad);
-        let left = cx + gap, rightSide = true;
-        if(left + w + pad > cw){ left = cx - gap - w; rightSide = false; }
-        left = Math.max(pad, Math.min(left, cw - w - pad));
-        let top = cy - h/2; top = Math.max(pad, Math.min(top, ch - h - pad));
-        card.style.left = left + 'px'; card.style.top = top + 'px';
-        card.classList.toggle('place-right', rightSide);
-        card.classList.toggle('place-left', !rightSide);
-      }
-
-      const open=()=>card.classList.add('open'), close=()=>card.classList.remove('open');
-      pin.addEventListener('mouseenter', open); pin.addEventListener('mouseleave', close);
-      card.addEventListener('mouseenter', open); card.addEventListener('mouseleave', close);
-      pin.addEventListener('click', ()=>card.classList.toggle('open'));
-      pin.addEventListener('keydown', e=>{
-        if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.classList.toggle('open'); }
-        if(e.key==='Escape'){ close(); }
-      });
-
-      // Position the card now and when window resizes
-      placeCard();
-      window.addEventListener('resize', placeCard);
+      MODELS.push({ pin, card, xPct, yPct });
     });
   }
 
-  // If image hasn't loaded yet, wait for it
-  if(!img.complete || img.naturalWidth === 0){
-    img.addEventListener('load', layoutPins, { once: true });
-    // also try after a slight delay in case of responsive layout adjustments
-    setTimeout(() => { if(img.complete) layoutPins(); }, 250);
-  } else {
-    layoutPins();
+  function layoutCards(){
+    const container = document.querySelector('.collab-static');
+    if(!container) return;
+    const cw = container.clientWidth, ch = container.clientHeight, pad = 8, gap = 12;
+    MODELS.forEach(({card, xPct, yPct}) => {
+      const centerX = cw*(xPct/100), centerY = ch*(yPct/100);
+      const w = Math.min(card.offsetWidth || 150, cw-2*pad), h = Math.min(card.offsetHeight||90, ch-2*pad);
+      let left = centerX+gap, placeRight = true;
+      if(left+w+pad>cw){ left=centerX-gap-w; placeRight=false; }
+      left = Math.max(pad, Math.min(left, cw-w-pad));
+      let top = Math.max(pad, Math.min(centerY-h/2, ch-h-pad));
+      card.style.left = left+'px';
+      card.style.top = top+'px';
+      card.classList.toggle('place-right', placeRight);
+      card.classList.toggle('place-left', !placeRight);
+    });
   }
 
-  // If layout changes (e.g. fonts load, container resized), relayout pins
-  const ro = new ResizeObserver(()=>{ if(img.complete) layoutPins(); });
-  ro.observe(container);
-  ro.observe(img);
+  window.addEventListener('resize', layoutCards);
+  buildPins();
+  layoutCards();
 })();
+
+    function alignMapHeight() {
+  const list = document.querySelector('.collab-list');
+  const map = document.querySelector('.collab-static');
+  if (list && map) {
+    map.style.height = list.offsetHeight + 'px';
+  }
+}
+
+window.addEventListener('load', alignMapHeight);
+window.addEventListener('resize', alignMapHeight);
 </script>
 </body>
 </html>
