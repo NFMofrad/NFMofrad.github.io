@@ -292,6 +292,33 @@
     .pin.inactive:hover{ opacity:1; filter:none; z-index:6; }
     .collab-card.inactive{ border-style:dashed; }
     .c-de{ color:var(--c-de) } .c-us{ color:var(--c-us) } .c-cn{ color:var(--c-cn) } .c-uk{ color:var(--c-uk) } .c-fi{ color:var(--c-fi) }
+	
+    .research-card .chips {
+      display: flex !important;        /* make it a flex container */
+      justify-content: center !important; /* center horizontally */
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      width: 100%;
+      margin-left: 0;                  /* remove any inherited left offset */
+      padding: 0.5rem 0 0;             /* small top spacing from card content */
+      box-sizing: border-box;
+      text-align: center;
+    }
+    
+    /* keep chip appearance but ensure centering works */
+    .research-card .chip {
+      display: inline-flex;            /* keep them inline-like but flex for alignment */
+      justify-content: center;
+      align-items: center;
+      padding: .22rem .55rem;
+      border-radius: 999px;
+      font-weight:700;
+      white-space: nowrap;             /* prevent awkward wrapping of single chip text */
+    }
+    
+    /* Some cards use `subprojects` / `.subproject` etc — ensure chips don't inherit left margin */
+    .research-card > * { box-sizing: border-box; }
   </style>
 </head>
 <body>
@@ -359,6 +386,7 @@
           <span class="spacer"></span><span aria-hidden="true">↗</span>
         </a>
       </div>
+	  <hr class="divider">
       <div class="chips"><span class="chip">Reactive MD</span><span class="chip">LAMMPS</span><span class="chip">Python</span></div>
     </div>
 
@@ -374,6 +402,7 @@
           <span class="spacer"></span><span aria-hidden="true">↗</span>
         </a>
       </div>
+	  <hr class="divider">
       <div class="chips"><span class="chip">LAMMPS</span><span class="chip">Python</span><span class="chip">Data Analysis</span><span class="chip">DFT</span></div>
     </div>
 
@@ -388,6 +417,7 @@
           <span class="spacer"></span><span aria-hidden="true">↗</span>
         </a>
       </div>
+	  <hr class="divider">
       <div class="chips"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span><span class="chip">HPC</span></div>
     </div>
 
@@ -401,8 +431,8 @@
           <span class="title">MLIP</span>
           <span class="spacer"></span><span aria-hidden="true">↗</span>
         </a>
-		
       </div>
+	  <hr class="divider">
       <div class="chips"><span class="chip">Machine Learning</span><span class="chip">scikit-learn</span><span class="chip">Python</span></div>
     </div>
 
