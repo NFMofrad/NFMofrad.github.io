@@ -70,10 +70,9 @@
     html, body { direction:ltr; text-align:left; }
     body{
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      max-width: 100%;          /* allow full width on mobile */
+      max-width: var(--content-width);
       margin: var(--outer-margin) auto;
       padding: 0 var(--side-padding);
-      box-sizing: border-box;
       line-height: 1.6;
       color: var(--ink);
       background: var(--bg);
@@ -452,7 +451,6 @@
 
   <div class="rail-shell">
     <div class="act-header" aria-hidden="true">
-      <div>Date</div><div>Type</div><div>Title</div><div>Link</div>
     </div>
     <div id="activitiesRail" class="activities-rail" role="list" aria-label="Recent activities"></div>
   </div>
