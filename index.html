@@ -70,9 +70,10 @@
     html, body { direction:ltr; text-align:left; }
     body{
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      max-width: var(--content-width);
+      max-width: 100%;          /* allow full width on mobile */
       margin: var(--outer-margin) auto;
       padding: 0 var(--side-padding);
+      box-sizing: border-box;
       line-height: 1.6;
       color: var(--ink);
       background: var(--bg);
